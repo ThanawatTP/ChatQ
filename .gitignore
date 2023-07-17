@@ -1,4 +1,5 @@
 mlruns
 src/*
-!src/TechX_corpus_normTH.txt
-!src/PointX_corpus.txt
+code-demo
+!src/TechX_corpus*
+!src/PointX_corpus*
