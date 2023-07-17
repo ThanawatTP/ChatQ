@@ -3,3 +3,4 @@ src/*
 code-demo
 !src/TechX_corpus*
 !src/PointX_corpus*
+!src/SCB_corpus*
