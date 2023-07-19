@@ -69,7 +69,7 @@ class w2v_tuning:
             question, expected_answer = [word.lower() for word in line.split()[:2]]
             choices = [word.lower() for word in line.split()[2:]]
             try:
-                predicted_answer = model.wv.most_similar(positive=[question, choices[1]], negative=[expected_answer])[0][0]
+                predicted_answer = self.model.wv.most_similar(positive=[question, choices[1]], negative=[expected_answer])[0][0]
                 if predicted_answer == choices[0]:
                     correct_predictions += 1
             except KeyError:
@@ -140,6 +140,35 @@ class w2v_tuning:
 
             accuracy = self.test_Accuracy('src/questions-words.txt' )
             mlflow.log_metric("accuracy", accuracy)
+
+    def save_model(self,file_path):
+
+        self.model.wv.save(file_path)
+        print('save model successful')
+
+    def corpus_topic_score(self,num_topics=10):
+
+        data_lemmatized = self.preprocess_text(self.corpus)
+        id2word = corpora.Dictionary(data_lemmatized)
+
+        LDA_corpus = [id2word.doc2bow(text) for text in data_lemmatized]
+        lda_model = gensim.models.ldamodel.LdaModel(corpus=LDA_corpus,
+                                            id2word=id2word,
+                                            num_topics=num_topics, 
+                                            random_state=100,
+                                            update_every=1,
+                                            chunksize=100,
+                                            passes=10,
+                                            alpha='auto',
+                                            per_word_topics=True)
+        
+        print('\nPerplexity: ', lda_model.log_perplexity(LDA_corpus))  
+        # a measure of how good the model is. lower the better.
+
+        # Compute Coherence Score
+        coherence_model_lda = CoherenceModel(model=lda_model, texts=data_lemmatized, dictionary=id2word, coherence='c_v')
+        coherence_lda = coherence_model_lda.get_coherence()
+        print('Coherence Score: ', coherence_lda)
 
 
 print('run')
