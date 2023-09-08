@@ -6,4 +6,4 @@ models
 __pycache__
 spider
 col-linking
-data
+db
