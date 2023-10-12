@@ -129,3 +129,7 @@ class SchemaLinking():
                 columns.extend(self.columns_from_query(token))
 
         return list(set(columns))
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26f73d43b8cf9aa29be2948c0d065ccec53c442a
