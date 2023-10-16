@@ -7,18 +7,22 @@ from torch.utils.data import DataLoader
 class SchemaLinking():
     def __init__(self):
         self.verbose = False
-        self.Sentence_transformer = SentenceTransformer('all-MiniLM-L6-v2')
+        self.model = SentenceTransformer('models/all-MiniLM-L6-v2')
         self.schema_description = pd.read_excel('src/New_query_Description.xlsx',header=1)[['Column','Description']].dropna().reset_index(drop=True)
-        self.description_emb = [self.Sentence_transformer.encode(des) for des in self.schema_description['Description'].tolist()]
+        self.description_emb = [self.sentence_embed(des) for des in self.schema_description['Description'].tolist()]
         self.schema_columns = self.schema_description['Column'].tolist()
         self.sql_extract_token_type = {
             sqlparse.sql.IdentifierList, sqlparse.sql.Where,
             sqlparse.sql.Having, sqlparse.sql.Comparison, sqlparse.sql.Function,
             sqlparse.sql.Parenthesis, sqlparse.sql.Operation, sqlparse.sql.Case
         }
+
+    def sentence_embed(self,sentence):
+        sentence_embeddings = self.model.encode(sentence)
+        return sentence_embeddings 
     
     def question_schema_columns_scores(self,question):
-        q_emb = self.Sentence_transformer.encode(question)
+        q_emb = self.sentence_embed(question)
         scores = np.array([float(util.cos_sim(q_emb, des)) for des in self.description_emb])
         return scores
     
@@ -30,7 +34,7 @@ class SchemaLinking():
             add_description = ", ".join(cats)
             idx = self.schema_description['Column'] == col_name, 'Description'
             self.schema_description.loc[idx] += add_description
-        self.description_emb = [self.Sentence_transformer.encode(des) for des in self.schema_description['Description'].tolist()]
+        self.description_emb = [self.sentence_embed(des) for des in self.schema_description['Description'].tolist()]
 
     def accuracy_of_onehot(self,choose_vector,expect_vector):
         #compare accuracy of two one-hot vectors
@@ -43,8 +47,8 @@ class SchemaLinking():
 
         return accuracy
     
-    def description_of_columns(self,column):
-        return self.schema_description[self.schema_description['Column'].isin(column)]['Description'].tolist()
+    def description_of_columns(self,columns):
+        return self.schema_description[self.schema_description['Column'].isin(columns)]['Description'].tolist()
     
     def fine_tune_model(self,questions_columns_list,epochs):
         train_examples = []
@@ -54,70 +58,55 @@ class SchemaLinking():
             train_examples.append(InputExample(texts=data))
 
         train_dataloader = DataLoader(train_examples, shuffle=True, batch_size=64)
-        train_loss = losses.MultipleNegativesRankingLoss(model=self.Sentence_transformer)
-        self.Sentence_transformer.fit(train_objectives=[(train_dataloader, train_loss)],
+        train_loss = losses.MultipleNegativesRankingLoss(model=self.model)
+        self.model.fit(train_objectives=[(train_dataloader, train_loss)],
                                       epochs=epochs, show_progress_bar=False) 
+        
         print("Fine-tune model done!")
-    
+
     def choose_col_onehot(self,columns):
         # return one hot vector of columns to choose
         col_vec = np.zeros(len(self.schema_columns))
         for col in columns:
             idx = self.schema_columns.index(col)
             col_vec[idx] = 1
-        
-        if self.verbose:
-            print("CHOOSE COLUMNS:\t",columns)
-            # print("CHOOSE COLUMNS VECTOR:\t",col_vec)
-            # print('VALIDATE CHOOSE COL BY IDX:\t',[self.schema_columns[int(id)] for id,c  in enumerate(col_vec) if int(c)])
-            print()
-
         return col_vec
-    
-    
+
     def ques_col_similarity(self,question,column):
         assert column in self.schema_columns, "Column not in schema"
         idx = self.schema_columns.index(column)
         col_emb = self.description_emb[idx]
-        q_emb = self.Sentence_transformer.encode(question)
+        q_emb = self.sentence_embed(question)
         score = float(util.cos_sim(q_emb, col_emb))
         return score
-
-
+    
     def get_columns_threshold(self,question, threshold=0.2):
         scores = self.question_schema_columns_scores(question)
         columns = self.schema_description.iloc[np.where(scores >= threshold)]['Column'].tolist()
         return columns
+
+    ##### Expirement testing #####
 
     def similarity_threshold(self,question,selected_columns):
         scores = self.question_schema_columns_scores(question)
         col_labels_index = self.schema_description[self.schema_description['Column'].isin(selected_columns)].index.tolist()
         col_labels_score = scores[col_labels_index]
         min_threshold = np.min(col_labels_score)
-        n_columns = len(self.schema_description.iloc[np.where(scores >= min_threshold)])
+        n_columns = len(self.get_columns_threshold(question,min_threshold))
 
-        if self.verbose:
-            print("QUESTION:\t",question)
-            print("EXPECT COLUMNS:\t",selected_columns)
-            print("MIN THRESHOLD:\t",min_threshold)
-            # print("MAX THRESHOLD:\t",np.max(col_labels_score))
-            # print("MAX SCORE COLUMN:\t",self.schema_description.iloc[np.argmax(scores)]['Column'])
-            # print("DESCIPTION:\t",self.schema_description.iloc[np.argmax(scores)]['Description'])
-            # print("SCORE:\t",np.max(scores))
-            print(f"CHOOSE RELATE COLUMN WITHIN THRESHOLD (FROM {len(scores)} COLUMNS):",n_columns)
-            print()
-        
+        print("QUESTION:\t",question)
+        print("EXPECT COLUMNS:\t",selected_columns)
+        print("MIN THRESHOLD:\t",min_threshold)
+        print(f"CHOOSE RELATE COLUMN WITHIN THRESHOLD (FROM {len(scores)} COLUMNS):",n_columns)
+        print()
         return n_columns
-    
+
     def columns_from_query(self,sql_query):
 
         if type(sql_query) == str:
-            sql_parse = sqlparse.parse(sql_query)[0]
-        else:
-            sql_parse = sql_query
-
+            sql_query = sqlparse.parse(sql_query)[0]
         columns = []
-        for token in sql_parse.tokens:
+        for token in sql_query.tokens:
             
             if isinstance(token, sqlparse.sql.Identifier):
                 if len(str(token).lower().split('as')) > 1:
@@ -128,8 +117,4 @@ class SchemaLinking():
             elif isinstance(token, tuple(self.sql_extract_token_type)):
                 columns.extend(self.columns_from_query(token))
 
-        return list(set(columns))
-<<<<<<< HEAD
-=======
-
->>>>>>> 26f73d43b8cf9aa29be2948c0d065ccec53c442a
+        return columns
