@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import sqlparse, time
+import sqlparse, time, yaml
 # from transformers import AutoTokenizer, AutoModel
 from sentence_transformers import SentenceTransformer, util, InputExample, losses
 from torch.utils.data import DataLoader
@@ -8,12 +8,15 @@ from torch.utils.data import DataLoader
 class SchemaLinking():
     def __init__(self):
         self.verbose = False
+        yaml_file_path = '/Users/thanawatthongpia/Desktop/code/fine-tuning/text2sql/nlq2sql_parameters.yaml'
+        with open(yaml_file_path, 'r') as yaml_file:
+            self.params = yaml.load(yaml_file, Loader=yaml.FullLoader)
         # self.tokenizer = AutoTokenizer.from_pretrained('models/all-MiniLM-L6-v2')
         # self.model = AutoModel.from_pretrained('models/all-MiniLM-L6-v2')
-        self.model = SentenceTransformer('models/all-MiniLM-L6-v2')
+        self.model = SentenceTransformer(self.params['sentence_emb_model_path'])
         self.schema_description_df = pd.DataFrame(columns=['Table_name','Column','Description','Description_vector'])
         self.schema_columns = self.schema_description_df['Column'].tolist()
-        self.set_schema()
+        self.set_schema("pointx_fbs_rpt_dly", self.params['pointx_description_path'])
         self.sql_extract_token_type = {
             sqlparse.sql.IdentifierList, sqlparse.sql.Where,
             sqlparse.sql.Having, sqlparse.sql.Comparison, sqlparse.sql.Function,
@@ -23,7 +26,7 @@ class SchemaLinking():
     def set_vector_embedding(self):
         self.schema_description_df['Description_vector'] = self.schema_description_df.apply(lambda row: self.sentence_embed(row['Description']), axis=1)
 
-    def set_schema(self,table_name:str="pointx_fbs_rpt_dly", schema_description_file_name:str='src/pointx_fbs_rpt_dly_description.csv'):
+    def set_schema(self,table_name:str="pointx_fbs_rpt_dly", schema_description_file_name:str='/Users/thanawatthongpia/Desktop/code/fine-tuning/src/pointx_fbs_rpt_dly_description.csv'):
         self.schema_temp = pd.read_csv(schema_description_file_name)
         self.schema_temp['Table_name'] = table_name
         self.schema_temp.insert(0, 'Table_name', self.schema_temp.pop('Table_name'))
@@ -42,7 +45,7 @@ class SchemaLinking():
         return scores
     
     def append_description_by_category(self,category_columns:list):
-        data_df = pd.read_csv('src/pointx_fbs_rpt_dly.csv')
+        data_df = pd.read_csv('/Users/thanawatthongpia/Desktop/code/fine-tuning/src/pointx_fbs_rpt_dly.csv')
         for col_name in category_columns:
             cats = set(data_df[col_name].values.tolist())
             cats = [c for c in cats if isinstance(c, str)]
