@@ -1,0 +1,183 @@
+Column,Description
+event_date,The date on which the event was logged (YYYYMMDD format in the registered timezone of your app).
+event_month,The year month on which the event was logged (YYYY-MM format).
+event_bundle_sequence_id,The sequential ID of the bundle in which these events were uploaded.
+event_timestamp,"The time (in microseconds, UTC) at which the event was logged on the client."
+event_name,The name of the event.
+customer_id,customer identification same values as pointx id in application
+user_pseudo_id,"The pseudonymous id (e.g., app instance ID) for the user."
+user_id,The user ID set via the setUserId API.
+event_previous_timestamp,"The time (in microseconds, UTC) at which the event was previously logged on the client."
+event_value_in_usd,"The currency-converted value (in USD) of the event's ""value"" parameter."
+event_server_timestamp_offset,Timestamp offset between collection time and upload time in micros.
+privacy_info_analytics_storage,Whether Analytics storage is enabled for the user.
+privacy_info_ads_storage,Whether ad targeting is enabled for a user.
+privacy_info_uses_transient_token,Whether a web user has denied Analytics storage and the developer has enabled measurement without cookies based on transient tokens in server data.
+user_properties_ga_session_number,"Session number identifies the number of sessions that a user has started up to the current session (e.g., a user's third or fifth session on your site)."
+user_properties_ga_session_number_set_timestamp_micros,"Timestamp of sessions that a user has started up to the current session (e.g., a user's third or fifth session on your site)."
+user_properties_ga_session_id,"Session ID identifies the session that an event came from. For example, two different session IDs are generated when a user has two separate sessions on your site."
+user_properties_ga_session_id_set_timestamp_micros,"Timestamp that an event came from. For example, two different session IDs are generated when a user has two separate sessions on your site."
+user_properties_first_open_time,Timestamp of user's first open
+user_properties_first_open_time_set_timestamp_micros,Timestamp of user's first open in micros timestamp
+user_first_touch_timestamp,Timestamp of user's first touch
+user_ltv_revenue,The Lifetime Value (revenue) of the user. This field is not populated in intraday tables.
+user_ltv_currency,The Lifetime Value (currency) of the user. This field is not populated in intraday tables.
+device_category,"The device category (mobile, tablet, desktop)."
+device_mobile_brand_name,The device brand name.
+device_mobile_model_name,The device model name.
+device_mobile_marketing_name,The device marketing name.
+device_mobile_os_hardware_model,The device model information retrieved directly from the operating system.
+device_operating_system,The operating system of the device.
+device_operating_system_version,The OS version.
+device_vendor_id,IDFV (present only if IDFA is not collected).
+device_advertising_id,Advertising ID/IDFA.
+device_language,The OS language.
+device_is_limited_ad_tracking,The device's Limit Ad Tracking setting.
+device_time_zone_offset_seconds,The offset from GMT in seconds.
+device_browser,The browser in which the user viewed content.
+device_browser_version,The version of the browser in which the user viewed content.
+device_web_info_browser,The browser in which the user viewed content
+device_web_info_browser_version,The version of the browser in which the user viewed content.
+device_web_info_hostname,The hostname associated with the logged event.
+geo_continent,"The continent from which events were reported, based on IP address."
+geo_country,"The country from which events were reported, based on IP address."
+geo_region,"The region from which events were reported, based on IP address."
+geo_city,"The city from which events were reported, based on IP address."
+geo_sub_continent,"The subcontinent from which events were reported, based on IP address."
+geo_metro,"The metro from which events were reported, based on IP address."
+app_info_id,The package name or bundle ID of the app.
+app_info_version,The app's versionName (Android) or short bundle version.
+app_info_install_store,The store that installed the app.
+app_info_firebase_app_id,The Firebase App ID associated with the app
+app_info_install_source,The source that installed the app.
+traffic_source_name,Name of the marketing campaign that first acquired the user. This field is not populated in intraday tables.
+traffic_source_medium,"Name of the medium (paid search, organic search, email, etc.) that first acquired the user. This field is not populated in intraday tables."
+traffic_source_source,Name of the network that first acquired the user. This field is not populated in intraday tables.
+stream_id,The numeric ID of the stream.
+platform,The platform on which the app was built.
+event_dimensions_hostname,"Includes the subdomain and domain names of a URL; for example, the Host Name of www.example.com/contact.html is www.example.com."
+ecommerce,A record of information about ecommerce. (Currenntly collect as string)
+items,A repeated record of items included in this event. (Currenntly collect as string)
+source_date,Source date of firebase file name
+address_id,Delivery address identification
+auto_earn_display,In case of event delete account the values of auto_earn flag
+banner_description,Highlight banner description
+banner_rank,Highlight banner item index
+banner_title,Highlight banner title
+campaign,Firebase's campagin name
+campaign_info_source,Firebase's campagin source information
+card_sub_product,"Possible Values : SCB Beyond , SCB Toyota platinum"
+change_language,"Possible Values : EN, TH"
+coupon_id,Coupon Identification Number
+customer_device_lat,Customer's device latitude
+customer_device_long,Customer's device longtitude
+customer_lat,Customer's latitude
+customer_long,Customer's longtitude
+customer_type,"Customer Type e.g. guest, N/A"
+deal_title,Deal of the day title
+deal_type,Deal of the day type
+debug_event,Debug event
+deleteacount_button,Delete account button
+delivery_address,Delivery address 
+delivery_fee,Delivery fee e.g. Fee 
+delivery_option,Delivery option e.g. Standard Shipping 
+delivery_type,Delivery type e.g. Standard Shipping 
+e_coupon_display,e coupon display
+each_point_card,"Point in each credit cards, This value in array format"
+ecatalog_list,ecatalog list
+ecatalog_rank,ecatalog rank
+ecoupon_rank,ecoupon rank
+ecoupon_title,ecoupon title
+engaged_session_event,Engaged session event
+engagement_time_msec,Engagement time millisecond
+entrances,Number of entrance
+error_message,Error message
+error_value,Error value
+event_id,Event Identification
+fatal,Fatal
+firebase_conversion,Firebase conversion
+firebase_error,Firebase error
+firebase_event_origin,Firebase event origin
+firebase_previous_class,Firebase previous class
+firebase_previous_id,Firebase previous identification
+firebase_previous_screen,Firebase previous screen
+firebase_screen,Firebase screen
+firebase_screen_class,Firebase screen claass
+firebase_screen_id,Firebase screen identification
+flashdeals_rank,Flash deals rank
+flashdeals_title,Flash deals title
+from_customer_name,Full customer name who transferred point to another customer
+from_customer_profile_name,Customer profile name in application  who transferred point to another customer
+ga_session_id,Session Identification
+ga_session_number,Sesion Number
+id,Category Identification
+ignore_referrer,Ignore referer
+item_code,Item code
+latitude,Latitude
+longitude,Longitude
+link_classes,Link classes
+link_domain,Link domain
+link_url,Link url
+list_card_sub_product,List card sub product
+list_each_point_card,List each point card
+medium,Medium
+merchant_id,Merchant id
+message_type,Message type
+offer_type,Offer type
+order_id,Order id
+order_status,Order status
+outbound,Outbound
+page,Page
+page_location,Page location
+page_referrer,Page referrer
+page_title,Page title
+payment_method,Payment method
+percent_scrolled,Percent scrolled
+place_id,Place id
+place_lat,Place lat
+place_LONG,Place long
+place_name,Place name
+point_balance_display,Point balance display
+points,Points
+points_per_unit,Points per unit
+points_remaining,Points remaining
+previous_app_version,Previous app version
+previous_first_open_count,Previous first open count
+previous_os_version,Previous os version
+primary_address,Primary address
+product_id,Product id
+quantity,Quantity
+reason_id,Reason id
+recommendedForYou_rank,RecommendedForYou rank
+search_list_id,Search list id
+search_list_id_scan_and_pay,Search list id scan and pay
+search_list_id_xstore,Search list id xstore
+session_engaged,Session engaged
+shop_list_id,Shop list id
+sku_catagory_name,Sku catagory name
+sku_group_type,Sku group type
+sku_id,Sku id
+source,Source
+source_page_name,Source page name
+stock_code,Stock code
+system_app,System app
+system_app_update,System app update
+tab_name,Tab name
+term,Term
+text_search,Text search
+timestamp,Timestamp
+to_customer_name,To customer name
+to_customer_profile_name,To customer profile name
+toggle,Toggle
+total_amount,Total amount
+total_point,Total point
+total_points,Total points
+transaction_id,Transaction id
+transaction_status,Transaction status
+transaction_type,Transaction type
+unable_to_proceed,Unable to proceed
+update_with_analytics,Update with analytics
+client_code,Client code
+client_member_id,Client member id
+_dl_load_ts,วันที่โหลดข้อมูล
+_date,วันที่เกิด Transaction

@@ -1,0 +1,4 @@
+{'nsql_model_path': 'models/nsql-350M',
+ 'pointx_datatype_path': 'src/columns_datatype.json',
+ 'pointx_description_path': 'src/pointx_fbs_rpt_dly_description.csv',
+ 'sentence_emb_model_path': 'models/all-MiniLM-L6-v2'}
