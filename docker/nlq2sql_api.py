@@ -97,7 +97,7 @@ async def pipeline_process(nlq=Body()):
         # print("SELECTED COLUMNS:",len(selected_columns),"FROM",len(ls_all_col_w_dtype))
 
     return output
-
+    
     
 
 
