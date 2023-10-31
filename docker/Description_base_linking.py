@@ -6,10 +6,9 @@ from sentence_transformers import SentenceTransformer, util, InputExample, losse
 from torch.utils.data import DataLoader
 
 class SchemaLinking():
-    def __init__(self):
+    def __init__(self,yaml_file='nlq2sql_parameters.yaml'):
         self.verbose = False
-        yaml_file_path = 'nlq2sql_parameters.yaml'
-        with open(yaml_file_path, 'r') as yaml_file:
+        with open(yaml_file, 'r') as yaml_file:
             self.params = yaml.load(yaml_file, Loader=yaml.FullLoader)
         # self.tokenizer = AutoTokenizer.from_pretrained('models/all-MiniLM-L6-v2')
         # self.model = AutoModel.from_pretrained('models/all-MiniLM-L6-v2')

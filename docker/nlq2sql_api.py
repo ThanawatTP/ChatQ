@@ -1,7 +1,21 @@
-import time, argparse, json, warnings, yaml
+import argparse, json, warnings, yaml
 from Description_base_linking import SchemaLinking
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from fastapi import Body, FastAPI
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+class TextInput(BaseModel):
+    text: str
+
+class ModelInput(BaseModel):
+    input: TextInput
+    class Config:
+        schema_extra = {
+            'example' : {
+                "input" : { "text" : "How many unique events have occurred?"}
+            }
+        }
+
 
 def column_index(use_cols,ls_all_col_w_dtype):
     col_ind = {}
@@ -42,10 +56,9 @@ verbose = True
 app = FastAPI()
 
 @app.post("/nlq")
-async def pipeline_process(nlq=Body()):
-
+async def pipeline_process(nlq: ModelInput):
     threshold = 0.2
-    question = nlq['input']['text']
+    question = nlq.dict()['input']['text']
 
     # schema column : data type
     with open(params['pointx_datatype_path'], 'r') as json_file:
@@ -67,7 +80,7 @@ async def pipeline_process(nlq=Body()):
     col_descriptions = schema_link.description_of_columns(selected_columns)
     reason = ""
     for col, desc in zip(selected_columns, col_descriptions):
-        reason += f"Column: {col} is selected because it is similar to the question.\nDescription: {desc}\n"
+        reason += f"{col} : {desc}\n"
     
     output = {
         "object": "list",
