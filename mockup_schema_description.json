@@ -1,0 +1,539 @@
+[   
+    {
+        "table": "musical",
+        "description": "This table contains information about musicals.",
+        "columns": {
+            "Musical_ID": "Unique identifier for the musical",
+            "Name": "Name of the musical",
+            "Year": "Year the musical was produced",
+            "Award": "Award received by the musical",
+            "Category": "Category of the award",
+            "Nominee": "Name of the nominee associated with the musical",
+            "Result": "Result of the award nomination for the musical"
+        }
+    },
+    {
+        "table": "actor",
+        "description": "This table contains information about actors in musicals.",
+        "columns": {
+            "Actor_ID": "Unique identifier for the actor",
+            "Name": "Name of the actor",
+            "Musical_ID": "Identifier of the musical the actor is associated with",
+            "Character": "Character played by the actor in the musical",
+            "Duration": "Duration of the actor's involvement in the musical",
+            "Age": "Age of the actor"
+        }
+    },
+    {
+        "table": "city",
+        "description": "This table contains information about cities.",
+        "columns": {
+          "City_ID": "Unique identifier for the city",
+          "Official_Name": "Official name of the city",
+          "Status": "City status (e.g., capital, major city)",
+          "Area_km_2": "City's area in square kilometers",
+          "Population": "City's population",
+          "Census_Ranking": "Ranking in the census"
+        }
+      },
+      
+      {
+        "table": "farm",
+        "description": "This table contains information about farms.",
+        "columns": {
+          "Farm_ID": "Unique identifier for the farm",
+          "Year": "Year of farm data",
+          "Total_Horses": "Total number of horses on the farm",
+          "Working_Horses": "Number of working horses on the farm",
+          "Total_Cattle": "Total number of cattle on the farm",
+          "Oxen": "Number of oxen on the farm",
+          "Bulls": "Number of bulls on the farm",
+          "Cows": "Number of cows on the farm",
+          "Pigs": "Number of pigs on the farm",
+          "Sheep_and_Goats": "Number of sheep and goats on the farm"
+        }
+      },
+      
+      {
+        "table": "farm_competition",
+        "description": "This table contains information about farm competitions.",
+        "columns": {
+          "Competition_ID": "Unique identifier for the competition",
+          "Year": "Year of the competition",
+          "Theme": "Theme of the competition",
+          "Host_city_ID": "Identifier of the host city",
+          "Hosts": "Hosts of the competition"
+        }
+      },
+      
+      {
+        "table": "competition_record",
+        "description": "This table contains records of farm competition results.",
+        "columns": {
+          "Competition_ID": "Identifier of the competition",
+          "Farm_ID": "Identifier of the farm participating in the competition",
+          "Rank": "Rank achieved by the farm in the competition"
+        }
+      },
+      {
+        "table": "Physician",
+        "description": "This table contains information about physicians working in a medical facility.",
+        "columns": {
+          "EmployeeID": "Unique identifier for the physician employee",
+          "Name": "Name of the physician",
+          "Position": "Position or job title of the physician",
+          "SSN": "Social Security Number of the physician"
+        }
+      },
+      
+      {
+        "table": "Department",
+        "description": "This table contains information about medical departments within the facility.",
+        "columns": {
+          "DepartmentID": "Unique identifier for the department",
+          "Name": "Name of the department",
+          "Head": "Head of the department"
+        }
+      },
+      
+      {
+        "table": "Affiliated_With",
+        "description": "This table represents affiliations between physicians and departments.",
+        "columns": {
+          "Physician": "Identifier of the physician",
+          "Department": "Identifier of the department",
+          "PrimaryAffiliation": "Indicates if the affiliation is primary or not"
+        }
+      },
+      
+      {
+        "table": "Procedures",
+        "description": "This table contains information about medical procedures offered in the facility.",
+        "columns": {
+          "Code": "Unique code for the procedure",
+          "Name": "Name of the procedure",
+          "Cost": "Cost of the procedure"
+        }
+      },
+      
+      {
+        "table": "Trained_In",
+        "description": "This table represents physician certifications for specific treatments.",
+        "columns": {
+          "Physician": "Identifier of the physician",
+          "Treatment": "Type of treatment or specialization",
+          "CertificationDate": "Date of certification",
+          "CertificationExpires": "Date when the certification expires"
+        }
+      },
+      
+      {
+        "table": "Patient",
+        "description": "This table contains information about patients in the medical facility.",
+        "columns": {
+          "SSN": "Social Security Number of the patient",
+          "Name": "Name of the patient",
+          "Address": "Address of the patient",
+          "Phone": "Phone number of the patient",
+          "InsuranceID": "Insurance identifier of the patient",
+          "PCP": "Primary Care Physician for the patient"
+        }
+      },
+      
+      {
+        "table": "Nurse",
+        "description": "This table contains information about nurses working in the facility.",
+        "columns": {
+          "EmployeeID": "Unique identifier for the nurse employee",
+          "Name": "Name of the nurse",
+          "Position": "Position or job title of the nurse",
+          "Registered": "Indicates if the nurse is registered or not",
+          "SSN": "Social Security Number of the nurse"
+        }
+      },
+      
+      {
+        "table": "Appointment",
+        "description": "This table contains information about medical appointments for patients.",
+        "columns": {
+          "AppointmentID": "Unique identifier for the appointment",
+          "Patient": "Identifier of the patient",
+          "PrepNurse": "Nurse responsible for preparation",
+          "Physician": "Physician conducting the appointment",
+          "Start": "Start time of the appointment",
+          "End": "End time of the appointment",
+          "ExaminationRoom": "Examination room for the appointment"
+        }
+      },
+      
+      {
+        "table": "Medication",
+        "description": "This table contains information about medications used in the facility.",
+        "columns": {
+          "Code": "Unique code for the medication",
+          "Name": "Name of the medication",
+          "Brand": "Brand name of the medication",
+          "Description": "Description of the medication"
+        }
+      },
+      
+      {
+        "table": "Prescribes",
+        "description": "This table represents medication prescriptions by physicians to patients.",
+        "columns": {
+          "Physician": "Identifier of the prescribing physician",
+          "Patient": "Identifier of the patient receiving the prescription",
+          "Medication": "Identifier of the prescribed medication",
+          "Date": "Date of the prescription",
+          "Appointment": "Associated appointment for the prescription",
+          "Dose": "Dose of the medication"
+        }
+      },
+      
+      {
+        "table": "Block",
+        "description": "This table contains information about blocks within the medical facility.",
+        "columns": {
+          "BlockFloor": "Floor of the block",
+          "BlockCode": "Unique code for the block"
+        }
+      },
+      
+      {
+        "table": "Room",
+        "description": "This table contains information about rooms within the facility.",
+        "columns": {
+          "RoomNumber": "Number of the room",
+          "RoomType": "Type of room (e.g., patient room, examination room)",
+          "BlockFloor": "Floor of the block where the room is located",
+          "BlockCode": "Code of the block where the room is located",
+          "Unavailable": "Indicates if the room is unavailable or not"
+        }
+      },
+      
+      {
+        "table": "On_Call",
+        "description": "This table represents nurses on call in specific blocks.",
+        "columns": {
+          "Nurse": "Identifier of the nurse on call",
+          "BlockFloor": "Floor of the block where the nurse is on call",
+          "BlockCode": "Code of the block where the nurse is on call",
+          "OnCallStart": "Start time of the on-call period",
+          "OnCallEnd": "End time of the on-call period"
+        }
+      },
+      
+      {
+        "table": "Stay",
+        "description": "This table contains information about patient stays in rooms.",
+        "columns": {
+          "StayID": "Unique identifier for the patient stay",
+          "Patient": "Identifier of the patient staying in the room",
+          "Room": "Identifier of the room where the patient is staying",
+          "StayStart": "Start date and time of the stay",
+          "StayEnd": "End date and time of the stay"
+        }
+      },
+      
+      {
+        "table": "Undergoes",
+        "description": "This table represents medical procedures that patients undergo during their stay.",
+        "columns": {
+          "Patient": "Identifier of the patient undergoing the procedure",
+          "Procedures": "Identifier of the procedure being undergone",
+          "Stay": "Identifier of the stay during which the procedure is performed",
+          "DateUndergoes": "Date when the procedure is performed",
+          "Physician": "Physician performing the procedure",
+          "AssistingNurse": "Nurse assisting in the procedure"
+        }
+      },
+      {
+        "table": "TV_Channel",
+        "description": "This table contains information about TV channels.",
+        "columns": {
+          "id": "Unique identifier for the TV channel",
+          "series_name": "Name of the TV channel's series",
+          "Country": "Country where the TV channel operates",
+          "Language": "Language used for TV channel content",
+          "Content": "Type of content aired on the channel",
+          "Pixel_aspect_ratio_PAR": "Pixel aspect ratio of the channel",
+          "Hight_definition_TV": "Indicates if the channel offers high-definition TV",
+          "Pay_per_view_PPV": "Indicates if the channel offers pay-per-view content",
+          "Package_Option": "Available package options for the channel"
+        }
+      },
+      
+      {
+        "table": "TV_series",
+        "description": "This table contains information about TV series episodes.",
+        "columns": {
+          "id": "Unique identifier for the TV series episode",
+          "Episode": "Episode number",
+          "Air_Date": "Date of the episode's airtime",
+          "Rating": "Episode rating",
+          "Share": "Share of viewers for the episode",
+          "18_49_Rating_Share": "18-49 age group rating share",
+          "Viewers_m": "Number of viewers in millions",
+          "Weekly_Rank": "Ranking of the episode for the week",
+          "Channel": "Channel on which the episode aired"
+        }
+      },
+      
+      {
+        "table": "Cartoon",
+        "description": "This table contains information about cartoons.",
+        "columns": {
+          "id": "Unique identifier for the cartoon",
+          "Title": "Title of the cartoon",
+          "Directed_by": "Director of the cartoon",
+          "Written_by": "Writer of the cartoon",
+          "Original_air_date": "Original air date of the cartoon",
+          "Production_code": "Production code of the cartoon",
+          "Channel": "Channel on which the cartoon aired"
+        }
+      },
+      {
+        "table": "film",
+        "description": "This table contains information about films in a series or season.",
+        "columns": {
+          "Film_ID": "Unique identifier for the film",
+          "Rank_in_series": "Rank of the film within the series",
+          "Number_in_season": "Number of the film in the season",
+          "Title": "Title of the film",
+          "Directed_by": "Director of the film",
+          "Original_air_date": "Original air date of the film",
+          "Production_code": "Production code of the film"
+        }
+      },
+      
+      {
+        "table": "cinema",
+        "description": "This table contains information about cinemas or movie theaters.",
+        "columns": {
+          "Cinema_ID": "Unique identifier for the cinema",
+          "Name": "Name of the cinema",
+          "Openning_year": "Year in which the cinema opened",
+          "Capacity": "Maximum capacity of the cinema",
+          "Location": "Location or address of the cinema"
+        }
+      },
+      
+      {
+        "table": "schedule",
+        "description": "This table contains information about film schedules in cinemas.",
+        "columns": {
+          "Cinema_ID": "Identifier of the cinema",
+          "Film_ID": "Identifier of the film being screened",
+          "Date": "Date of the screening",
+          "Show_times_per_day": "Number of showtimes per day",
+          "Price": "Ticket price for the screening"
+        }
+      },
+      {
+        "table": "GEOGRAPHIC",
+        "description": "This table contains geographic information about cities, counties, and regions.",
+        "columns": {
+          "CITY_NAME": "Name of the city",
+          "COUNTY": "County where the city is located",
+          "REGION": "Region or area associated with the city"
+        }
+      },
+      
+      {
+        "table": "RESTAURANT",
+        "description": "This table contains information about restaurants, including their name, food type, city, and rating.",
+        "columns": {
+          "ID": "Unique identifier for the restaurant",
+          "NAME": "Name of the restaurant",
+          "FOOD_TYPE": "Type of food served at the restaurant",
+          "CITY_NAME": "Name of the city where the restaurant is located",
+          "RATING": "Rating of the restaurant"
+        }
+      },
+      
+      {
+        "table": "LOCATION",
+        "description": "This table contains location information for restaurants, including house number, street name, and city.",
+        "columns": {
+          "RESTAURANT_ID": "Identifier of the restaurant's location",
+          "HOUSE_NUMBER": "House number or building number for the restaurant",
+          "STREET_NAME": "Name of the street where the restaurant is located",
+          "CITY_NAME": "Name of the city where the restaurant is situated"
+        }
+      },
+      {
+        "table": "people",
+        "description": "This table contains information about people, including their age, name, nationality, and college graduation details.",
+        "columns": {
+          "People_ID": "Unique identifier for the person",
+          "Age": "Age of the person",
+          "Name": "Name of the person",
+          "Nationality": "Nationality of the person",
+          "Graduation_College": "College where the person graduated"
+        }
+      },
+      
+      {
+        "table": "company",
+        "description": "This table contains information about companies, including their name, headquarters location, industry, and financial data.",
+        "columns": {
+          "Company_ID": "Unique identifier for the company",
+          "Name": "Name of the company",
+          "Headquarters": "Location of the company's headquarters",
+          "Industry": "Industry to which the company belongs",
+          "Sales_in_Billion": "Annual sales in billion dollars",
+          "Profits_in_Billion": "Annual profits in billion dollars",
+          "Assets_in_Billion": "Total assets in billion dollars",
+          "Market_Value_in_Billion": "Market value of the company in billion dollars"
+        }
+      },
+      
+      {
+        "table": "employment",
+        "description": "This table represents employment records, indicating which people worked at which companies in specific years.",
+        "columns": {
+          "Company_ID": "Identifier of the company where the person was employed",
+          "People_ID": "Identifier of the person who was employed",
+          "Year_working": "Year in which the person worked at the company"
+        }
+      },
+      {
+        "table": "works_on",
+        "description": "This table represents employee work assignments on various projects.",
+        "columns": {
+          "Essn": "Employee's Social Security Number",
+          "Pno": "Project number",
+          "Hours": "Number of hours the employee works on the project"
+        }
+      },
+      
+      {
+        "table": "employee",
+        "description": "This table contains information about employees, including their name, birthdate, address, salary, and department affiliation.",
+        "columns": {
+          "Fname": "First name of the employee",
+          "Minit": "Middle initial of the employee",
+          "Lname": "Last name of the employee",
+          "Ssn": "Employee's Social Security Number",
+          "Bdate": "Birthdate of the employee",
+          "Address": "Address of the employee",
+          "Sex": "Gender of the employee",
+          "Salary": "Salary of the employee",
+          "Super_ssn": "Social Security Number of the employee's supervisor",
+          "Dno": "Department number to which the employee belongs"
+        }
+      },
+      
+      {
+        "table": "department",
+        "description": "This table contains information about company departments, including department names, numbers, managers, and manager start dates.",
+        "columns": {
+          "Dname": "Name of the department",
+          "Dnumber": "Department number",
+          "Mgr_ssn": "Social Security Number of the department manager",
+          "Mgr_start_date": "Start date of the department manager"
+        }
+      },
+      
+      {
+        "table": "project",
+        "description": "This table contains information about company projects, including project names, numbers, locations, and department numbers.",
+        "columns": {
+          "Pname": "Name of the project",
+          "Pnumber": "Project number",
+          "Plocation": "Location of the project",
+          "Dnum": "Department number associated with the project"
+        }
+      },
+      
+      {
+        "table": "dependent",
+        "description": "This table contains information about employee dependents, including their names, gender, birthdates, and relationship to the employee.",
+        "columns": {
+          "Essn": "Employee's Social Security Number",
+          "Dependent_name": "Name of the dependent",
+          "Sex": "Gender of the dependent",
+          "Bdate": "Birthdate of the dependent",
+          "Relationship": "Relationship of the dependent to the employee"
+        }
+      },
+      
+      {
+        "table": "dept_locations",
+        "description": "This table contains information about department locations within the company.",
+        "columns": {
+          "Dnumber": "Department number",
+          "Dlocation": "Location of the department"
+        }
+      },
+      {
+        "table": "shop",
+        "description": "This table contains information about shops, including their address, number of staff, score, and opening year.",
+        "columns": {
+          "Shop_ID": "Unique identifier for the shop",
+          "Address": "Address of the shop",
+          "Num_of_staff": "Number of staff members working at the shop",
+          "Score": "Score or rating of the shop",
+          "Open_Year": "Year when the shop opened"
+        }
+      },
+      
+      {
+        "table": "member",
+        "description": "This table contains information about members, including their name, membership card details, age, time of purchase, level of membership, and address.",
+        "columns": {
+          "Member_ID": "Unique identifier for the member",
+          "Name": "Name of the member",
+          "Membership_card": "Details of the membership card",
+          "Age": "Age of the member",
+          "Time_of_purchase": "Date and time of purchase",
+          "Level_of_membership": "Level or type of membership",
+          "Address": "Address of the member"
+        }
+      },
+      
+      {
+        "table": "happy_hour",
+        "description": "This table contains information about happy hours at shops, including the shop's identifier, the month of the happy hour, and the number of staff in charge.",
+        "columns": {
+          "HH_ID": "Unique identifier for the happy hour event",
+          "Shop_ID": "Identifier of the shop hosting the happy hour",
+          "Month": "Month in which the happy hour takes place",
+          "Num_of_staff_in_charge": "Number of staff members in charge during the happy hour"
+        }
+      },
+      
+      {
+        "table": "happy_hour_member",
+        "description": "This table represents member participation in happy hour events, including the happy hour event identifier, member identifier, and total amount spent during the happy hour.",
+        "columns": {
+          "HH_ID": "Identifier of the happy hour event",
+          "Member_ID": "Identifier of the member participating in the happy hour",
+          "Total_amount": "Total amount spent by the member during the happy hour"
+        }
+      },
+      {
+        "table": "singer",
+        "description": "This table contains information about singers, including their name, birth year, net worth, and citizenship.",
+        "columns": {
+          "Singer_ID": "Unique identifier for the singer",
+          "Name": "Name of the singer",
+          "Birth_Year": "Year of birth of the singer",
+          "Net_Worth_Millions": "Net worth of the singer in millions",
+          "Citizenship": "Citizenship of the singer"
+        }
+      },
+      
+      {
+        "table": "song",
+        "description": "This table contains information about songs, including their title, singer identifier, sales, and highest position in charts.",
+        "columns": {
+          "Song_ID": "Unique identifier for the song",
+          "Title": "Title of the song",
+          "Singer_ID": "Identifier of the singer who performed the song",
+          "Sales": "Sales of the song",
+          "Highest_Position": "Highest position achieved by the song in music charts"
+        }
+      } 
+]
+  
