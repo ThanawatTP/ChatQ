@@ -5,8 +5,8 @@ from nltk.corpus import wordnet, stopwords
 from nltk.stem import WordNetLemmatizer
 
 class word_embedding:
-    def __init__(self, w2v_file_path = "../src/w2v.42B.300d.txt", 
-                 pre_train_file_path = "../src/GloVe.wordvectors", 
+    def __init__(self, w2v_file_path = "../src/word2vec_files/w2v.42B.300d.txt", 
+                 pre_train_file_path = "../src/word2vec_files/GloVe.wordvectors", 
                  vectorsize=300, window=5, min_count=1, workers=4):
 
         nltk.download('stopwords')
