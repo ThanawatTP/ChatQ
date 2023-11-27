@@ -11,3 +11,4 @@ models
 docker/models
 docker/testing
 AIS
+*.env
