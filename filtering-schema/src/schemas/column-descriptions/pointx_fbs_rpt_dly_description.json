@@ -6,7 +6,7 @@
         "event_month": "The year month on which the event was logged (YYYY-MM format).",
         "event_bundle_sequence_id": "The sequential ID of the bundle in which these events were uploaded.",
         "event_timestamp": "The time (in microseconds, UTC) at which the event was logged on the client.",
-        "event_name": "The name of the event.",
+        "event_name": "The name of the event activity that occurred from the user's use.",
         "customer_id": "customer identification same values as pointx id in application",
         "user_pseudo_id": "The pseudonymous id (e.g., app instance ID) for the user.",
         "user_id": "The user ID set via the setUserId API.",

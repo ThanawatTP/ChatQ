@@ -1,0 +1,7 @@
+{
+  "JOIN_KEY": {"PK": ["HH_ID", "Member_ID"],
+               "FK": {"Member_ID": "member"}},
+  "HH_ID": "number",
+  "Member_ID": "number",
+  "Total_amount": "number"
+}

@@ -1,7 +1,8 @@
-import argparse, json, warnings, yaml
+import json, warnings, yaml, os
 from Description_base_linking import SchemaLinking
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 class TextInput(BaseModel):
@@ -17,70 +18,95 @@ class ModelInput(BaseModel):
         }
 
 
-def column_index(use_cols,ls_all_col_w_dtype):
-    col_ind = {}
-    for i,col in enumerate(ls_all_col_w_dtype):
-        if col[0] in use_cols: col_ind[col[0]] = i
-    return list(set(col_ind.values()))
-
-def sql_create_table(ls_col, ls_all_col_w_dtype):
-    ls_col_ind = column_index(ls_col,ls_all_col_w_dtype)
-    sql = "CREATE TABLE pointx_fbs_txn_rpt_dly ("
-    used_cols = [ls_all_col_w_dtype[i] for i in ls_col_ind ]
-    for c_name, c_dtype in used_cols:
-        sql = sql + c_name + ' ' + c_dtype + ','
-    sql = sql[:-1] + ')'
-    return sql
-
-def gen_promp(q, sql):
-    promp = sql + '\n' + "-- Using valid SQLite, answer the following questions for the tables provided above."
-    promp = promp + '\n' + '-- ' + q
-    promp = promp + '\n' + "SELECT"
-    return promp
-
-def gen_sql(prompt):
-    input_ids = tokenizer(prompt, return_tensors="pt").input_ids
-    generated_ids = model.generate(input_ids, max_length=500)
-    resp = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
-    return resp
-
-
 with open('nlq2sql_parameters.yaml', 'r') as yaml_file:
-        params = yaml.load(yaml_file, Loader=yaml.FullLoader)
+    params = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
-warnings.filterwarnings("ignore")
 schema_link = SchemaLinking()
 tokenizer = AutoTokenizer.from_pretrained(params['nsql_model_path'])
 model = AutoModelForCausalLM.from_pretrained(params['nsql_model_path'])
 verbose = True
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+print("READY!!!!")
+
+def create_prompt(question, used_schema):
+    full_sql = ""
+    for table, columns in used_schema.items():
+        if not len(columns): continue       # pass this table when no column
+        primary_keys = schema_link.schema_datatypes[table]["JOIN_KEY"]["PK"]
+        foreign_keys = list(schema_link.schema_datatypes[table]["JOIN_KEY"]["FK"].keys())
+        join_table_key = primary_keys + foreign_keys
+        
+        sql = f"CREATE TABLE {table} ("
+        for column in columns:
+            if column in join_table_key and len(join_table_key): join_table_key.remove(column)
+            try:
+                sql += f' {column} {schema_link.schema_datatypes[table][column]},'
+            except KeyError: 
+                print(f"KeyError :{column}")
+                
+        if len(join_table_key): # key for join of table are not selected
+            for column in join_table_key:
+                sql += f' {column} {schema_link.schema_datatypes[table][column]},'
+
+        # All table contain PK (maybe)
+        if len(primary_keys):
+            sql += 'PRIMARY KEY ('
+            for pk in primary_keys: sql += f'"{pk}" ,'
+            sql = sql[:-1] + ")"
+        if len(foreign_keys):
+            for fk, ref_table in schema_link.schema_datatypes[table]["JOIN_KEY"]["FK"].items():
+                sql += f', FOREIGN KEY ("{fk}") REFERENCES "{ref_table}" ("{fk}"),'
+
+        sql = sql[:-1] + " )\n\n"
+        full_sql += sql
+    prompt = full_sql + "-- Using valid SQLite, answer the following questions for the tables provided above."
+    prompt = prompt + '\n' + '-- ' + question
+    prompt = prompt + '\n' + "SELECT"
+
+    if verbose: print(prompt)
+
+    return prompt
+
+def gen_sql(prompt):
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        input_ids = tokenizer(prompt, return_tensors="pt").input_ids
+        generated_ids = model.generate(input_ids, max_length=1000)
+        sql = tokenizer.decode(generated_ids[0], skip_special_tokens=True).split('\n')[-1]
+    return sql
 
 @app.post("/nlq")
 async def pipeline_process(nlq: ModelInput):
-    threshold = 0.2
     question = nlq.dict()['input']['text']
-
-    # schema column : data type
-    with open(params['pointx_datatype_path'], 'r') as json_file:
-        col_type = json.load(json_file)
-        ls_all_col_w_dtype = [[k, col_type[k]] for k in col_type]
-
-    selected_columns = schema_link.get_columns_threshold(question, threshold)
-    created_table = sql_create_table(selected_columns, ls_all_col_w_dtype)
-    prompt = gen_promp(question, created_table)
-
-    resp =  gen_sql(prompt)
-    sql_result = resp.split('\n')[-1]
-    selected_columns = schema_link.columns_from_query(sql_result)
-
-    for column in selected_columns:
-        if column not in schema_link.schema_columns:
-            selected_columns.remove(column)
-    
-    col_descriptions = schema_link.description_of_columns(selected_columns)
+    used_schema = schema_link.filter_schema(question, column_threshold=0.3, table_threshold=0.2, 
+                                            filter_tables=False, max_select_columns=False)
+    prompt = create_prompt(question, used_schema)
+    sql_result = gen_sql(prompt)
+    table_col_sql = schema_link.table_col_of_sql(sql_result)
     reason = ""
-    for col, desc in zip(selected_columns, col_descriptions):
-        reason += f"{col} : {desc}\n"
+    for table, cols in table_col_sql.items():
+        for file_name in os.listdir(os.environ.get('schema_description_folder_path')):
+            if file_name.startswith(table):
+                table_description_file = os.path.join(os.environ.get('schema_description_folder_path'), file_name)
+                # condition when file name start with same name 
+                with open(table_description_file, 'r') as jsonfile:
+                    table_description = json.load(jsonfile)
+                    if table_description['table'] == table : break
+        else: continue
+
+        table_reason = f"Table - {table}\t: {table_description['description']}\n"
+        if len(cols):       # have columns of table
+            col_reason = "\n".join([f"\tColumn - {c}\t: {table_description['columns'][c]}" for c in cols])
+        else: col_reason = ""
+        reason += str(table_reason + col_reason + "\n\n")
     
     output = {
         "object": "list",
@@ -107,31 +133,12 @@ async def pipeline_process(nlq: ModelInput):
         print("=== REASON ===")
         print(reason)
         print()
-        # print("SELECTED COLUMNS:",len(selected_columns),"FROM",len(ls_all_col_w_dtype))
 
     return output
     
-    
-
-
-# if __name__ == '__main__':
-#     # start = time.time()
-#     arg_parser = argparse.ArgumentParser()
-#     arg_parser.add_argument('--nlq', required=True, help="Input question")
-#     arg_parser.add_argument('--threshold', type=float, default=0.2, help="Minimum sentence similarity threshold score")
-#     arg_parser.add_argument('--param_yaml_path', type=str, default='nlq2sql_parameters.yaml', help="Parameter config file")
-#     arg_parser.add_argument('--verbose', type=bool, default=True)
-#     args = arg_parser.parse_args()
-
-#     warnings.filterwarnings("ignore")
-#     with open(args.param_yaml_path, 'r') as yaml_file:
-#         params = yaml.load(yaml_file, Loader=yaml.FullLoader)
-    
-#     schema_link = SchemaLinking()
-#     tokenizer = AutoTokenizer.from_pretrained(params['nsql_model_path'])
-#     model = AutoModelForCausalLM.from_pretrained(params['nsql_model_path'])
-#     verbose = True
-#     pipeline_process(args.nlq, args.threshold)
-#     # print(f'e2e processing time = {time.time()-start:.2f} seconds')
-
-
+# @app.delete("/delete_table")
+# async def remove_table(table_name: str):
+#     if table_name in schema_link.table_desc_vectors:
+#         schema_link.remove_table(table_name)
+#     else:
+#         return "Table not found"

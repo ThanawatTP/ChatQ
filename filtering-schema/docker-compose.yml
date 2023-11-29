@@ -1,0 +1,12 @@
+services:
+  nlq2sql-join:
+    image: thanawatthongpia23044/nlq2sql:join-table-arm
+    container_name: nlq2sql-join
+    ports:
+      - "8000:8000"
+    environment:
+      # schema_description_folder_path : 'src/schemas/column-descriptions'
+      # schema_data_types_folder_path : 'src/schemas/column-datatypes'
+      schema_description_folder_path : 'src/schemas/coffeeshop-descriptions'
+      schema_data_types_folder_path : 'src/schemas/coffeeshop-datatypes'
+

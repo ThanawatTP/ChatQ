@@ -1,4 +1,6 @@
 {
+    "JOIN_KEY": {"PK": ["event_id"], 
+                 "FK": {"_date":"pointx_keymatrix_dly"}},
     "event_date": "text",
     "event_month": "text",
     "event_bundle_sequence_id": "number",

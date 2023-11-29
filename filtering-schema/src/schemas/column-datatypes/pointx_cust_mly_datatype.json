@@ -1,4 +1,6 @@
 {
+    "JOIN_KEY": {"PK": ["rm_key", "rmid"], 
+                 "FK": {}},
     "month_id": "text",
     "pointx_id": "text",
     "rm_key": "text",

@@ -1,4 +1,6 @@
 {
+    "JOIN_KEY": {"PK": [], 
+                 "FK": {"_date":"pointx_fbs_rpt_dly"}},
     "month_id": "text",
     "ntx_pointx_financial": "number",
     "ntx_pointx_financial_out": "number",
