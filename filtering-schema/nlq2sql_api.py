@@ -22,6 +22,7 @@ with open('nlq2sql_parameters.yaml', 'r') as yaml_file:
     params = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
 schema_link = SchemaLinking()
+print("Loading NSQL model...")
 tokenizer = AutoTokenizer.from_pretrained(params['nsql_model_path'])
 model = AutoModelForCausalLM.from_pretrained(params['nsql_model_path'])
 verbose = True
