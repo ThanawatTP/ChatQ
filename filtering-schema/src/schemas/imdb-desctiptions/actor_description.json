@@ -1,0 +1,12 @@
+{
+    "table": "actor",
+    "description": "This table contains information about actors in musicals.",
+    "columns": {
+        "Actor_ID": "Unique identifier for the actor",
+        "Name": "Name of the actor",
+        "Musical_ID": "Identifier of the musical the actor is associated with",
+        "Character": "Character played by the actor in the musical",
+        "Duration": "Duration of the actor's involvement in the musical",
+        "Age": "Age of the actor"
+    }
+}
