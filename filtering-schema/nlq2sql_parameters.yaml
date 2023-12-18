@@ -1,11 +1,4 @@
 {
     'nsql_model_path': 'models/nsql-350M',
-    'sentence_emb_model_path': 'models/all-MiniLM-L6-v2',
-    # 'schema_data_types_folder_path': 'src/schemas/column-datatypes',
-    # 'schema_description_folder_path': 'src/schemas/column-descriptions',
-
-    ### coffee shop testing ###
-    'schema_data_types_folder_path': 'src/schemas/coffeeshop-datatypes',
-    'schema_description_folder_path': 'src/schemas/coffeeshop-descriptions'
-    
+    'sentence_emb_model_path': 'models/all-MiniLM-L6-v2'
 }

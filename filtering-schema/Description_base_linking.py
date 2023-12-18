@@ -6,7 +6,7 @@ class SchemaLinking():
         
         with open(yaml_file, 'r') as yaml_file:
             self.params = yaml.load(yaml_file, Loader=yaml.FullLoader)
-        self.verbose = False
+        self.verbose = bool(os.environ.get('verbose').lower() == 'true')
         self.split_pattern = r'[\s\n;().]'
         self.table_desc_vectors = {}     # { table1: vector , ...}
         self.schema_desc_vectors = {}    # { table1: { column1: vector, ...}}
@@ -24,6 +24,10 @@ class SchemaLinking():
             assert table1 == table2, "Not same table"
             self.join_schema(schema_description_path=os.path.join(os.environ.get('schema_description_folder_path'), description_path),
                              schema_datatype_path=os.path.join(os.environ.get('schema_data_types_folder_path'), datatype_path))
+        
+        if self.verbose:
+            print("Description Path\t",self.schema_descriptions_path )
+            print("DataType Path\t", self.schema_datatypes_path)
 
     
     def join_schema(self, schema_description_path:str, schema_datatype_path:str):
@@ -48,8 +52,11 @@ class SchemaLinking():
         del self.schema_datatypes[table_name]
         return True
     
-    def filter_schema(self, question:str, column_threshold:float = 0.4, table_threshold:float = 0.2, 
-                      max_select_columns:int = 5, filter_tables:bool = True):
+    def filter_schema(self, question:str, 
+                      column_threshold:float = 0.4, 
+                      table_threshold:float = 0.3, 
+                      max_select_columns:int = 5, 
+                      filter_tables:bool = False):
         question_emb = self.sentence_emb_model.encode(question)
         used_schemas = {}
         found_table = []
@@ -84,7 +91,12 @@ class SchemaLinking():
             if max_select_columns and len(used_schemas[table]) > max_select_columns:
                 # Select the top k largest values from the dictionary
                 used_schemas[table] = dict(sorted(used_schemas[table].items(), key=lambda item: item[1], reverse=True)[:max_select_columns])
-        
+        if self.verbose:
+            print("QUESTION\t", question)
+            print("COLUMN THRESHOLD\t", column_threshold)
+            print("TABLE THRESHOLD\t\t", table_threshold)
+            print("MAX SELECTED COLUMN\t", max_select_columns)
+            print("FILTER TABLE\t\t", filter_tables)
         return used_schemas
 
     def table_col_of_sql(self, sql_query):

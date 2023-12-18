@@ -25,7 +25,7 @@ schema_link = SchemaLinking()
 print("Loading NSQL model...")
 tokenizer = AutoTokenizer.from_pretrained(params['nsql_model_path'])
 model = AutoModelForCausalLM.from_pretrained(params['nsql_model_path'])
-verbose = True
+verbose = bool(os.environ.get('verbose').lower() == 'true')
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -87,8 +87,11 @@ def gen_sql(prompt):
 @app.post("/nlq")
 async def pipeline_process(nlq: ModelInput):
     question = nlq.dict()['input']['text']
-    used_schema = schema_link.filter_schema(question, column_threshold=0.3, table_threshold=0.2, 
-                                            filter_tables=False, max_select_columns=False)
+    used_schema = schema_link.filter_schema(question,
+                                            column_threshold= float(os.environ.get('column_threshold')), 
+                                            table_threshold= float(os.environ.get('table_threshold')), 
+                                            max_select_columns= int(os.environ.get('max_select_column')), 
+                                            filter_tables= bool(os.environ.get('filter_table').lower() == "true"))
     prompt = create_prompt(question, used_schema)
     sql_result = gen_sql(prompt)
     table_col_sql = schema_link.table_col_of_sql(sql_result)
@@ -125,6 +128,9 @@ async def pipeline_process(nlq: ModelInput):
     }
 
     if verbose:
+        print("=== SCHEMA ===")
+        print(used_schema)
+        print()
         print("=== QUESTION ===")
         print(question)
         print()

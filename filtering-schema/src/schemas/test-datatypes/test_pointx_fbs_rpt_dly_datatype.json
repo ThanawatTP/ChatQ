@@ -1,0 +1,18 @@
+{
+    "JOIN_KEY": {"PK": ["ga_session_id"], 
+                 "FK": {}},
+    "COLUMNS": {
+        "device_category":"text",
+        "device_mobile_model_name":"text",
+        "engagement_time_msec":"number",
+        "event_date":"text",
+        "event_month":"text",
+        "event_name":"text",
+        "event_timestamp":"text",
+        "ga_session_id":"number",
+        "geo_country":"text",
+        "geo_region":"text",
+        "user_first_touch_timestamp":"text",
+        "user_pseudo_id":"text"
+    }
+}
