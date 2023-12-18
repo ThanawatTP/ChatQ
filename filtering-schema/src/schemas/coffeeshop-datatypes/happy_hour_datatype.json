@@ -1,9 +1,11 @@
 {
     "JOIN_KEY": {"PK": ["HH_ID", "Shop_ID", "Month"], 
                  "FK": {"Shop_ID":"shop"}},
-    "HH_ID": "number",
-    "Shop_ID": "number",
-    "Month": "text",
-    "Num_of_staff_in_charge": "number"
+    "COLUMNS": {
+        "HH_ID": "number",
+        "Shop_ID": "number",
+        "Month": "text",
+        "Num_of_staff_in_charge": "number"
+    }
 }
   

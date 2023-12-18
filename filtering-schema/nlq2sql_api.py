@@ -49,13 +49,13 @@ def create_prompt(question, used_schema):
         for column in columns:
             if column in join_table_key and len(join_table_key): join_table_key.remove(column)
             try:
-                sql += f' {column} {schema_link.schema_datatypes[table][column]},'
+                sql += f' {column} {schema_link.schema_datatypes[table]["COLUMNS"][column]},'
             except KeyError: 
                 print(f"KeyError :{column}")
                 
         if len(join_table_key): # key for join of table are not selected
             for column in join_table_key:
-                sql += f' {column} {schema_link.schema_datatypes[table][column]},'
+                sql += f' {column} {schema_link.schema_datatypes[table]["COLUMNS"][column]},'
 
         # All table contain PK (maybe)
         if len(primary_keys):
