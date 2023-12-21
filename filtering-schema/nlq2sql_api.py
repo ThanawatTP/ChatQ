@@ -94,6 +94,8 @@ async def pipeline_process(nlq: ModelInput):
                                             filter_tables= bool(os.environ.get('filter_table').lower() == "true"))
     prompt = create_prompt(question, used_schema)
     sql_result = gen_sql(prompt)
+
+    
     table_col_sql = schema_link.table_col_of_sql(sql_result)
     reason = ""
     for table, cols in table_col_sql.items():

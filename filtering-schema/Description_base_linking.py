@@ -14,8 +14,6 @@ class SchemaLinking():
         self.sentence_emb_model = SentenceTransformer(self.params['sentence_emb_model_path'])
         self.schema_descriptions_path = sorted(os.listdir(os.environ.get('schema_description_folder_path')))
         self.schema_datatypes_path = sorted(os.listdir(os.environ.get('schema_data_types_folder_path')))
-        # self.schema_descriptions_path = sorted(os.listdir(self.params['schema_description_folder_path']))
-        # self.schema_datatypes_path = sorted(os.listdir(self.params['schema_data_types_folder_path']))
         assert len(self.schema_descriptions_path) == len(self.schema_datatypes_path)
         # init class object
         for description_path, datatype_path in zip(self.schema_descriptions_path, self.schema_datatypes_path):
