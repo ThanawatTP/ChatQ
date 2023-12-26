@@ -53,14 +53,14 @@ def create_prompt(question, used_schema):
             except KeyError: 
                 print(f"KeyError :{column}")
                 
-        if len(join_table_key): # key for join of table are not selected
+        if len(join_table_key): # key for join of table are remaining
             for column in join_table_key:
                 sql += f' {column} {schema_link.schema_datatypes[table]["COLUMNS"][column]},'
 
         # All table contain PK (maybe)
         if len(primary_keys):
             sql += 'PRIMARY KEY ('
-            for pk in primary_keys: sql += f'"{pk}" ,'
+            for pk_type in primary_keys: sql += f'"{pk_type}" ,'
             sql = sql[:-1] + ")"
         if len(foreign_keys):
             for fk, ref_table in schema_link.schema_datatypes[table]["JOIN_KEY"]["FK"].items():

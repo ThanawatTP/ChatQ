@@ -57,11 +57,12 @@ class SchemaLinking():
                       filter_tables:bool = False):
         question_emb = self.sentence_emb_model.encode(question)
         used_schemas = {}
-        found_table = []
+        found_table = []            # table found in question
+        found_columns = []          # column found in question
 
-        # string matching with table, coumn and question tokens
+        # string matching with table, column and question tokens
         for token in question.split():
-            found_columns = []
+            
             if token in self.schema_desc_vectors.keys():
                 print("Table string match  ---->", token)
                 found_table.append(token)
@@ -83,18 +84,23 @@ class SchemaLinking():
             used_schemas[table] = {}
             for column, column_vector in self.schema_desc_vectors[table].items():
                 sim_score = util.cos_sim(column_vector, question_emb)
-                if (sim_score >= (column_threshold - table_offset)
-                    or column in found_columns):
+                if sim_score >= (column_threshold - table_offset):
                     used_schemas[table][column] = round(float(sim_score),3)
+                if column in found_columns:
+                    used_schemas[table][column] = 1.0
             if max_select_columns and len(used_schemas[table]) > max_select_columns:
                 # Select the top k largest values from the dictionary
                 used_schemas[table] = dict(sorted(used_schemas[table].items(), key=lambda item: item[1], reverse=True)[:max_select_columns])
+
         if self.verbose:
             print("QUESTION\t", question)
             print("COLUMN THRESHOLD\t", column_threshold)
             print("TABLE THRESHOLD\t\t", table_threshold)
             print("MAX SELECTED COLUMN\t", max_select_columns)
             print("FILTER TABLE\t\t", filter_tables)
+            # print("USED SCHEMAS\t", used_schemas)
+            print("")
+
         return used_schemas
 
     def table_col_of_sql(self, sql_query):

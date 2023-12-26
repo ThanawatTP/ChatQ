@@ -13,3 +13,4 @@ services:
       schema_data_types_folder_path : 'src/schemas/test-datatypes'
       filter_table: False
       column_threshold: 0.1
+      max_select_column: 10

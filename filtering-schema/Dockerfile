@@ -5,7 +5,7 @@ ENV schema_description_folder_path='src/schemas/column-descriptions'
 ENV schema_data_types_folder_path='src/schemas/column-datatypes'
 ENV column_threshold=0.2
 ENV table_threshold=0.2
-ENV max_select_column=5
+ENV max_select_column=10
 ENV filter_table=False
 ENV verbose=True
 
