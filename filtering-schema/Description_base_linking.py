@@ -1,17 +1,15 @@
-import yaml, os, json, re
+import os, json, re
 from sentence_transformers import SentenceTransformer, util
 
 class SchemaLinking():
-    def __init__(self,yaml_file='nlq2sql_parameters.yaml'):
+    def __init__(self):
         
-        with open(yaml_file, 'r') as yaml_file:
-            self.params = yaml.load(yaml_file, Loader=yaml.FullLoader)
         self.verbose = bool(os.environ.get('verbose').lower() == 'true')
         self.split_pattern = r'[\s\n;().]'
         self.table_desc_vectors = {}     # { table1: vector , ...}
         self.schema_desc_vectors = {}    # { table1: { column1: vector, ...}}
         self.schema_datatypes = {}       # { table1: { column1: datatype, ...}}
-        self.sentence_emb_model = SentenceTransformer(self.params['sentence_emb_model_path'])
+        self.sentence_emb_model = SentenceTransformer(os.environ.get('sentence_emb_model_path'))
         self.schema_descriptions_path = sorted(os.listdir(os.environ.get('schema_description_folder_path')))
         self.schema_datatypes_path = sorted(os.listdir(os.environ.get('schema_data_types_folder_path')))
         assert len(self.schema_descriptions_path) == len(self.schema_datatypes_path)

@@ -1,4 +1,4 @@
-import json, warnings, yaml, os
+import json, warnings, os
 from Description_base_linking import SchemaLinking
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from fastapi import FastAPI
@@ -18,13 +18,13 @@ class ModelInput(BaseModel):
         }
 
 
-with open('nlq2sql_parameters.yaml', 'r') as yaml_file:
-    params = yaml.load(yaml_file, Loader=yaml.FullLoader)
+# with open('nlq2sql_parameters.yaml', 'r') as yaml_file:
+#     params = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
 schema_link = SchemaLinking()
 print("Loading NSQL model...")
-tokenizer = AutoTokenizer.from_pretrained(params['nsql_model_path'])
-model = AutoModelForCausalLM.from_pretrained(params['nsql_model_path'])
+tokenizer = AutoTokenizer.from_pretrained(os.environ.get('nsql_model_path'))
+model = AutoModelForCausalLM.from_pretrained(os.environ.get('nsql_model_path'))
 verbose = bool(os.environ.get('verbose').lower() == 'true')
 app = FastAPI()
 app.add_middleware(

@@ -1,4 +1,0 @@
-{
-    'nsql_model_path': 'models/nsql-350M',
-    'sentence_emb_model_path': 'models/all-MiniLM-L6-v2'
-}

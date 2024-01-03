@@ -3,6 +3,8 @@ FROM python:3.10.9-slim
 # Set environment variables
 ENV schema_description_folder_path='src/schemas/column-descriptions'
 ENV schema_data_types_folder_path='src/schemas/column-datatypes'
+ENV nsql_model_path='models/nsql-350M'
+ENV sentence_emb_model_path='models/all-MiniLM-L6-v2'
 ENV column_threshold=0.2
 ENV table_threshold=0.2
 ENV max_select_column=10
