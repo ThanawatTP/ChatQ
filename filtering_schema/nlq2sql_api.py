@@ -7,25 +7,48 @@ from pydantic import BaseModel
 
 class TextInput(BaseModel):
     text: str
+    domain: str
 
 class ModelInput(BaseModel):
     input: TextInput
     class Config:
         schema_extra = {
             'example' : {
-                "input" : { "text" : "How many unique events have occurred?"}
+                "input" : { 
+                    "text" : "How many unique events have occurred?",
+                    "domain": "pointx"}
             }
         }
 
+##############  Local test  ############## 
 
-# with open('nlq2sql_parameters.yaml', 'r') as yaml_file:
-#     params = yaml.load(yaml_file, Loader=yaml.FullLoader)
+# default
+used_domain_name = None
+# os.environ['schema_description_folder_path'] = 'src/schemas/coffeeshop-descriptions'
+# os.environ['schema_datatypes_folder_path'] = 'src/schemas/coffeeshop-datatypes'
+
+os.environ['nsql_model_path'] = 'models/nsql-350M'
+os.environ['sentence_emb_model_path'] = 'models/all-MiniLM-L6-v2'
+os.environ['column_threshold'] = '0.2'
+os.environ['table_threshold'] = '0.2'
+os.environ['max_select_column'] = '10'
+os.environ['filter_table'] = 'False'
+os.environ['verbose'] = 'True'     
+
+########################################## 
 
 schema_link = SchemaLinking()
+
+# print("Embedding schema...")
+# schema_link.selected_domain(schema_description_folder_path=os.environ.get('schema_description_folder_path'),
+#                             schema_data_types_folder_path=os.environ.get('schema_datatypes_folder_path'))
+
 print("Loading NSQL model...")
+
 tokenizer = AutoTokenizer.from_pretrained(os.environ.get('nsql_model_path'))
 model = AutoModelForCausalLM.from_pretrained(os.environ.get('nsql_model_path'))
 verbose = bool(os.environ.get('verbose').lower() == 'true')
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -34,8 +57,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-print("READY!!!!")
 
 def create_prompt(question, used_schema):
     full_sql = ""
@@ -87,6 +108,26 @@ def gen_sql(prompt):
 @app.post("/nlq")
 async def pipeline_process(nlq: ModelInput):
     question = nlq.dict()['input']['text']
+    domain_name = nlq.dict()['input']['domain']
+    global used_domain_name
+    if domain_name != used_domain_name:
+
+        with open("NLQ_domain_map.json") as f:
+            domain_map = json.load(f)
+            assert domain_name in domain_map.keys(), "Domain not found"
+
+        # re initialize
+        schema_link.table_desc_vectors = {}
+        schema_link.schema_desc_vectors = {}
+        schema_link.schema_datatypes = {}
+        used_domain_name = domain_name
+
+        os.environ['schema_description_folder_path'] = domain_map[domain_name]['schema_description_folder_path']
+        os.environ['schema_datatypes_folder_path'] = domain_map[domain_name]['schema_datatypes_folder_path']
+        print(f"Embedding {domain_name} schema...")
+        schema_link.selected_domain(schema_description_folder_path=os.environ.get('schema_description_folder_path'),
+                                    schema_data_types_folder_path=os.environ.get('schema_datatypes_folder_path'))
+    
     used_schema = schema_link.filter_schema(question,
                                             column_threshold= float(os.environ.get('column_threshold')), 
                                             table_threshold= float(os.environ.get('table_threshold')), 
@@ -130,7 +171,7 @@ async def pipeline_process(nlq: ModelInput):
     }
 
     if verbose:
-        print("=== SCHEMA ===")
+        print("=== SCHEMA SCORES ===")
         print(used_schema)
         print()
         print("=== QUESTION ===")

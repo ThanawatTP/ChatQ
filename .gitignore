@@ -13,3 +13,4 @@ docker/testing
 AIS
 *.env
 .*
+filtering_schema/src/data/*
