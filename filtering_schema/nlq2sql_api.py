@@ -78,14 +78,15 @@ def create_prompt(question:str, used_schema):
             for column in join_table_key:
                 sql += f' {column} {schema_link.schema_datatypes[table]["COLUMNS"][column]},'
 
-        # All table contain PK (maybe)
+        # A lot of tables contain primary key
         if len(primary_keys):
-            sql += 'PRIMARY KEY ('
+            sql = sql[:-1] + ' PRIMARY KEY ('
             for pk_type in primary_keys: sql += f'"{pk_type}" ,'
-            sql = sql[:-1] + ")"
+            sql = sql[:-1] + "),"
+        # If table contains foreign key
         if len(foreign_keys):
             for fk, ref_table in schema_link.schema_datatypes[table]["JOIN_KEY"]["FK"].items():
-                sql += f', FOREIGN KEY ("{fk}") REFERENCES "{ref_table}" ("{fk}"),'
+                sql = sql[:-1] + f' FOREIGN KEY ("{fk}") REFERENCES "{ref_table}" ("{fk}"),'
 
         sql = sql[:-1] + " )\n\n"
         full_sql += sql
