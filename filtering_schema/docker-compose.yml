@@ -5,12 +5,6 @@ services:
     ports:
       - "8000:8000"
     environment:
-      # schema_description_folder_path : 'src/schemas/column-descriptions'
-      # schema_data_types_folder_path : 'src/schemas/column-datatypes'
-      # schema_description_folder_path : 'src/schemas/coffeeshop-descriptions'
-      # schema_data_types_folder_path : 'src/schemas/coffeeshop-datatypes'
-      schema_description_folder_path : 'src/schemas/test-descriptions'
-      schema_data_types_folder_path : 'src/schemas/test-datatypes'
       # nsql_model_path: 'NumbersStation/nsql-350M'
       # sentence_emb_model_path: 'sentence-transformers/all-MiniLM-L6-v2'
       filter_table: False

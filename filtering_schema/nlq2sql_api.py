@@ -58,7 +58,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def create_prompt(question, used_schema):
+def create_prompt(question:str, used_schema):
     full_sql = ""
     for table, columns in used_schema.items():
         if not len(columns): continue       # pass this table when no column
@@ -97,7 +97,7 @@ def create_prompt(question, used_schema):
 
     return prompt
 
-def gen_sql(prompt):
+def gen_sql(prompt:str):
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         input_ids = tokenizer(prompt, return_tensors="pt").input_ids
@@ -111,7 +111,7 @@ async def pipeline_process(nlq: ModelInput):
     domain_name = nlq.dict()['input']['domain']
     global used_domain_name
     if domain_name != used_domain_name:
-
+        # Embedding schema description
         with open("NLQ_domain_map.json") as f:
             domain_map = json.load(f)
             assert domain_name in domain_map.keys(), "Domain not found"
@@ -128,6 +128,7 @@ async def pipeline_process(nlq: ModelInput):
         schema_link.selected_domain(schema_description_folder_path=os.environ.get('schema_description_folder_path'),
                                     schema_data_types_folder_path=os.environ.get('schema_datatypes_folder_path'))
     
+    # question schema filtering
     used_schema = schema_link.filter_schema(question,
                                             column_threshold= float(os.environ.get('column_threshold')), 
                                             table_threshold= float(os.environ.get('table_threshold')), 
@@ -136,7 +137,7 @@ async def pipeline_process(nlq: ModelInput):
     prompt = create_prompt(question, used_schema)
     sql_result = gen_sql(prompt)
 
-    
+    # reason of SQL result
     table_col_sql = schema_link.table_col_of_sql(sql_result)
     reason = ""
     for table, cols in table_col_sql.items():

@@ -2,8 +2,6 @@
     "schema": [
       {
         "domain": "pointx",
-        "schema_datatype_folder_path": "src/schemas/column-datatypes",
-        "schema_description_folder_path": "src/schemas/column-descriptions",
         "sample_qry": [
           "How many unique transaction dates have occurred?",
           "Which day has the most total transactions?"
@@ -11,8 +9,6 @@
       },
       {
         "domain": "coffee_shop",
-        "schema_datatype_folder_path": "src/schemas/coffeeshop-datatypes",
-        "schema_description_folder_path": "src/schemas/coffeeshop-descriptions",
         "sample_qry": [
           "Which day has the most total sale?",
           "Show me shop and their address",
@@ -21,8 +17,6 @@
       },
       {
         "domain": "pointx_test",
-        "schema_datatype_folder_path": "src/schemas/test-datatypes",
-        "schema_description_folder_path": "src/schemas/test-descriptions",
         "sample_qry": [
           "How many unique transaction dates have occurred?",
           "Which day has the most total transactions?"

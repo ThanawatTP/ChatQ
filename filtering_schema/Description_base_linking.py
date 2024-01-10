@@ -11,7 +11,7 @@ class SchemaLinking():
         self.schema_datatypes = {}       # { table1: { column1: datatype, ...}}
         self.sentence_emb_model = SentenceTransformer(os.environ.get('sentence_emb_model_path'))
 
-    def selected_domain(self, schema_description_folder_path, schema_data_types_folder_path):
+    def selected_domain(self, schema_description_folder_path:str, schema_data_types_folder_path:str):
         schema_descriptions_files_path = sorted(os.listdir(schema_description_folder_path))
         schema_datatypes_files_path = sorted(os.listdir(schema_data_types_folder_path))
         assert len(schema_descriptions_files_path) == len(schema_datatypes_files_path), "Unequal number of files"
@@ -45,7 +45,7 @@ class SchemaLinking():
             column_vectors[col] = self.sentence_emb_model.encode(desc)
         self.schema_desc_vectors[table_name] = column_vectors
     
-    def remove_table(self, table_name):
+    def remove_table(self, table_name:str):
         del self.table_desc_vectors[table_name]
         del self.schema_desc_vectors[table_name]
         del self.schema_datatypes[table_name]
@@ -70,7 +70,7 @@ class SchemaLinking():
             for table, column in self.schema_desc_vectors.items():
                 if token in column.keys(): 
                     found_columns.append(token)
-                    print("Column matching  --->",token)
+                    print("Column matching  ---->",token)
         
         if filter_tables:       #filter table before
             used_tables = []
@@ -99,7 +99,6 @@ class SchemaLinking():
             print("TABLE THRESHOLD\t\t", table_threshold)
             print("MAX SELECTED COLUMN\t", max_select_columns)
             print("FILTER TABLE\t\t", filter_tables)
-            # print("USED SCHEMAS\t", used_schemas)
             print("")
 
         return used_schemas
