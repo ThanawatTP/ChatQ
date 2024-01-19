@@ -7,6 +7,7 @@
         "FK": {}
     },
     "COLUMNS": {
+        "rm_key": "text",
         "price_purchase_sku_pointvalue": "number",
         "amt_point_pay_pyw": "number",
         "n_purchase_sku": "number",

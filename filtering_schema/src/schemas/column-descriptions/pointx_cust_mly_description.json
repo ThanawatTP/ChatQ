@@ -2,6 +2,7 @@
     "table": "pointx_cust_mly",
     "description": "The table provides a comprehensive monthly overview of customer engagement within the app, \ncapturing data related to accumulated points, usage patterns, and relevant metrics, \nfacilitating in-depth analysis of user behavior and app performance.",
     "columns": {
+        "rm_key": "The term RMKEY can stand for various things depending on the context, and without specific information, it's challenging to provide a precise description. If you have a specific domain or context in mind, please provide additional details so that I can offer a more accurate description within the token limit.",
         "price_purchase_sku_pointvalue": "The value of POINT using Payment via X-Store.",
         "amt_point_pay_pyw": "The number of points caused by payment via Paywise.",
         "n_purchase_sku": "The number of times caused by payment via X-Store.",
