@@ -1,0 +1,6 @@
+services:
+  nlq2sql-join:
+    image: ai-model/nlq2sql:latest
+    container_name: nlq2sql
+    ports:
+      - "8000:8000"
