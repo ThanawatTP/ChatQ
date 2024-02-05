@@ -1,0 +1,1056 @@
+{
+  "table": "pointx_keymatrix_dly",
+  "description": "The Key Matrix Dashboard Design table provides a detailed overview of dashboard-related database columns, \nincluding data types, status indicators, descriptions, conditions, business logic, and sample data, \nenabling a comprehensive understanding of the data structure for effective dashboard design.",
+  "columns": {
+    "month_id": {
+      "description": "Transaction month",
+      "classes": [
+        "Transaction_Metrics",
+        "Date_information"
+      ]
+    },
+    "ntx_pointx_financial": {
+      "description": "All financial transactions, both Payment, Top Up, Transfer",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "ntx_pointx_financial_out": {
+      "description": "Number of Payment Transaction, Transfer",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "ncust_user": {
+      "description": "All the number of Customer in the systemAnd can use Point XPP",
+      "classes": [
+        "Customer_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "ncust_pointx": {
+      "description": "Point X Customers, both Customer Type, Easy and Non Easy, not including Guest.",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "ncust_visit": {
+      "description": "All the number of Customer in the systemAnd come to use the point x app on that day",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "ncust_pointx_visit": {
+      "description": "The number of point x Customers, both Customer Type, is Easy and Non Easy, not including Guest that came to use the point x app on that day.",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "ncust_pointx_financial": {
+      "description": "The number of point x Customers, both Customer Type, is Easy and Non Easy, not including Guest at the financial transaction.",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "ncust_guest": {
+      "description": "The number of point x Customers, both Customer Type is Guest.",
+      "classes": [
+        "Customer_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "ncust_guest_visit": {
+      "description": "Point X Customers, both Customer Type, is a guest that came to use the point x app on that day.",
+      "classes": [
+        "Customer_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "ncust_register_success": {
+      "description": "New customers that Register comes each day.",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "amt_point_topup": {
+      "description": "The number of points caused by all topups",
+      "classes": [
+        "External_Partner_Metrics"
+      ]
+    },
+    "amt_point_topup_auto": {
+      "description": "Auto Converse Point Topup number",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "amt_point_topup_onboard": {
+      "description": "Point Topup number onboard",
+      "classes": [
+        "External_Partner_Metrics"
+      ]
+    },
+    "amt_point_topup_onetime": {
+      "description": "Number of Point Topup Manual",
+      "classes": [
+        "Dashboard_Metadata"
+      ]
+    },
+    "amt_point_transfer_out": {
+      "description": "The number of points that transferred to other users",
+      "classes": [
+        "Point_Rate_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "amt_point_pay": {
+      "description": "The number of points caused by all payment",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_pay_sku": {
+      "description": "The number of points caused by payment via X-Store.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_pay_qr": {
+      "description": "The number of points caused by payment via Scan & Pay.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_pay_pyw": {
+      "description": "The number of points caused by payment via Paywise.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_pay_pyw_rbh": {
+      "description": "The number of points caused by payment via Robinhood Platform.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_pay_qr_29": {
+      "description": "The number of points caused by payment via Scan & Pay type QR 29.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_pay_qr_30": {
+      "description": "The number of points caused by payment via Scan & Pay type QR 30.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_pay_qr_cs": {
+      "description": "The number of points caused by payment via Scan & Pay type QRCS.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "amt_point_payment_p_only": {
+      "description": "The number of points caused by payment by Payment Method is the use of Point Only.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_payment_p_casa": {
+      "description": "The number of points caused by payment by Payment Method is the use of Point, plus payment by transferring money.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_payment_p_cc": {
+      "description": "The number of points caused by payment by Payment Method is to use Point, plus payment through credit cards.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay": {
+      "description": "The average of the Relased Rate at all Payment customers.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_sku": {
+      "description": "The average rate of the customer Payment via X-Store (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_qr": {
+      "description": "The rate of the Rate that Payment customers via Scan & Pay (Weigthed Average with Point Amount paid).",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_pyw": {
+      "description": "The average rate of the Payment customers via Paywise (Weighted Average with Point Amount paid).",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_pyw_rbh": {
+      "description": "The average rate of the Payment customers via Robinhood Platform (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_qr_29": {
+      "description": "The average rate of the customer Payment with Transaction Type type QR 29 (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_qr_30": {
+      "description": "The average rate of the customer Payment with Transaction Type type QR 30 (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_qr_cs": {
+      "description": "The average rate of the customer Payment with Transaction Type type QRCS (Weigted Average with Point Amount paid)",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_weight": {
+      "description": "The average of the Relased Rate at all Payment customers.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_sku_weight": {
+      "description": "The average rate of the customer Payment via X-Store (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_qr_weight": {
+      "description": "The rate of the Rate that Payment customers via Scan & Pay (Weigthed Average with Point Amount paid).",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_pyw_weight": {
+      "description": "The average rate of the Payment customers via Paywise (Weighted Average with Point Amount paid).",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_pyw_rbh_weight": {
+      "description": "The average rate of the Payment customers via Robinhood Platform (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_qr_29_weight": {
+      "description": "The average rate of the customer Payment with Transaction Type type QR 29 (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_qr_30_weight": {
+      "description": "The average rate of the customer Payment with Transaction Type type QR 30 (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_point_per_baht_pay_qr_cs_weight": {
+      "description": "The average rate of the customer Payment with Transaction Type type QRCS (Weigted Average with Point Amount paid)",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay": {
+      "description": "The average of the Cost Per Point at all Payment customers (Weigted Average with Point Amount paid)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_sku": {
+      "description": "The average of the Cost Per Point that the Payment customers via X-Store (Weigthed Average with Point AMOUNT).",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_qr": {
+      "description": "The average Cost Per Point that Payment customers via Scan & Pay (Weigthed Average with Point Amount paid)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_pyw": {
+      "description": "The average of the Cost Per Point that the Paywise (Weigthed Average with Point AMOUNT) is calculated from 1 divided by release rate.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_pyw_rbh": {
+      "description": "The average of the Cost Per Point that Payment customers via Robinhood Platform (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_qr_29": {
+      "description": "The average of Cost Per Point at Payment customers with Transaction Type type QR 29 (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_qr_30": {
+      "description": "The average of Cost Per Point at Payment customers with Transaction Type type QR 30 (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_qr_cs": {
+      "description": "The average of Cost Per Point at Payment customers with Transaction Type type QRCS (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_weight": {
+      "description": "The average of the Cost Per Point at all Payment customers (Weigted Average with Point Amount paid)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_sku_weight": {
+      "description": "The average of the Cost Per Point that the Payment customers via X-Store (Weigthed Average with Point AMOUNT).",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_qr_weight": {
+      "description": "The average of the Cost Per Point at Payment customers via Scan & Pay (Weigthed Average with Point Amount paid).",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_pyw_weight": {
+      "description": "The average of the Cost Per Point that the Paywise (Weigthed Average with Point AMOUNT) is calculated from 1 divided by release rate.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_pyw_rbh_weight": {
+      "description": "The average Cost Per Point that Payment customers via Robinhood Platform (Weigthed Average with Point Amount paid)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_qr_29_weight": {
+      "description": "The average of the Cost Per Point at Payment customers with Transaction Type type QR 29 (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_qr_30_weight": {
+      "description": "The average of Cost Per Point at Payment customers with Transaction Type type QR 30 (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "rate_baht_per_point_pay_qr_cs_weight": {
+      "description": "The average of Cost Per Point at Payment customers with Transaction Type type QRCS (Weigthed Average with Point AMOUNT)",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "n_topup_point": {
+      "description": "The number of transactions caused by all topups.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_topup_point_onboard": {
+      "description": "Number of Transaction Topup Episode Onboard",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_topup_point_onetime": {
+      "description": "Number of Transaction Topup Manual",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_topup_point_auto": {
+      "description": "Auto converse transaction top",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_transfer_point_out": {
+      "description": "The number of transactions that transferred to other users",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_purchase": {
+      "description": "The number of transactions caused by payment does not include Reverse Scan & Pay (2002A), Reverse Paywise (2004A) and Cancel Order (7015A) of X-Store.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_purchase_sku": {
+      "description": "The number of transactions caused by payment via X-Store does not include the Cancel Order (7015A) of X-Store.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_purchase_qr": {
+      "description": "The number of transactions caused by payment via Scan & Pay does not include Reverse Scan & Pay (2002A).",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_purchase_pyw": {
+      "description": "The number of transactions caused by payment via Paywise does not include Reverse Paywise (2004A).",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_purchase_pyw_rbh": {
+      "description": "The number of transactions caused by payment via Robinhood Platform does not include Reverse Scan & Pay (2002A).",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_purchase_qr_29": {
+      "description": "The number of transactions caused by payment via Scan & Pay with Transaction Type type QR 29, not including Reverse Scan & Pay (2002A).",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_purchase_qr_30": {
+      "description": "The number of transactions caused by payment via Scan & Pay with Transaction Type QR 30, not including Reverse Scan & Pay (2002A).",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_purchase_qr_cs": {
+      "description": "The number of transactions caused by payment via Scan & Pay with Transaction Type QRCS excluding Reverse Scan & Pay (2002A).",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_point_payment_p_only": {
+      "description": "The number of transactions caused by payment by Payment Method is to use Point Only, not including Reverse Scan & Pay (2002A), Reverse Paywise (2004A) and Cancel Order (7015A) of X-Store.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_point_payment_p_casa": {
+      "description": "The number of transactions caused by payment by Payment Method is to use POINT, plus the payment of accounting does not include the Reverse Scan & Pay (2002A), Reverse Paywise (2004A) and Cancel (7015A) of X-Store.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_point_payment_p_cc": {
+      "description": "The number of transactions caused by payment by Payment Method is to use POINT, combined with credit card payments, not including Reverse Scan & Pay (2002A), Reverse Paywise (2004A) and Cancel Order (7015A) of X-STORE.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_ncust_user": {
+      "description": "All the number of Customer in the systemAnd can use Point XPP",
+      "classes": [
+        "Customer_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_ncust_pointx": {
+      "description": "Point X Customers, both Customer Type, Easy and Non Easy, not including Guest.",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "mtd1_ncust_visit": {
+      "description": "All the number of Customer in the systemAnd use Point XPP from 1 of the month to the latest transaction information",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "mtd1_ncust_pointx_visit": {
+      "description": "The number of point x Customers, both Customer Type, is Easy and Non Easy, not including the Guest that has been active from the 1st day of the month to the latest transaction data.",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "mtd1_ncust_pointx_financial": {
+      "description": "The number of point x Customers, both Customer Type, is Easy and Non Easy, not including the Guest at the financial transaction (broken program at Reverse) from 1 of the month to the latest transaction data.",
+      "classes": [
+        "Customer_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_ncust_guest": {
+      "description": "The number of point x Customers, both Customer Type is Guest.",
+      "classes": [
+        "Customer_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_ncust_guest_visit": {
+      "description": "The number of point x Customers, both Customer Type, is a guest that comes to use Point XP from the 1st day to the latest transaction data.",
+      "classes": [
+        "Customer_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_amt_point_topup": {
+      "description": "The number of points caused by topups from 1 of the month to the latest transaction day.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_amt_point_topup_auto": {
+      "description": "Auto Converse Point Topup from 1 of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_amt_point_topup_onboard": {
+      "description": "Point Topup number onboard from 1 of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_amt_point_topup_onetime": {
+      "description": "Manual number points from 1 of the month until the latest transaction",
+      "classes": [
+        "Date_information"
+      ]
+    },
+    "mtd1_amt_point_transfer_out": {
+      "description": "The number of points that transferred to other users from 1 of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_amt_point_pay": {
+      "description": "The number of points caused by Payment from the 1st day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_pay_sku": {
+      "description": "The number of points caused by payment via X-Store from 1 of the month until the latest transaction day.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_pay_qr": {
+      "description": "The number of points caused by payment via Scan & Pay from 1 of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_pay_pyw": {
+      "description": "The number of points caused by payment via Paywise from the 1st day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_pay_pyw_rbh": {
+      "description": "The number of points caused by payment via Robinhood Platform from the 1st day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_pay_qr_29": {
+      "description": "The number of points caused by payment via Scan & Pay with Transaction Type type QR 29 from the 1st day of the month to the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_pay_qr_30": {
+      "description": "The number of points caused by payment via Scan & Pay with Transaction Type QR 30 from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_pay_qr_cs": {
+      "description": "The number of points caused by payment via Scan & Pay with Transaction Type QRCS from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_payment_p_only": {
+      "description": "The number of points caused by payment by Payment Method is the use of Point Only from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_payment_p_casa": {
+      "description": "The number of points caused by payment by Payment Method is the use of Point, plus payment by transferring money.From the 1st day of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_amt_point_payment_p_cc": {
+      "description": "The number of points caused by payment by Payment Method is to use Point, plus payment through credit cards.From the 1st day of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay": {
+      "description": "The average rate of all the customers from 1 of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_sku": {
+      "description": "The rate of the Rate that Payment customers via X-Store from 1 of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_qr": {
+      "description": "The rate of the Rate that Payment customers via Scan & Pay from 1 of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_pyw": {
+      "description": "The rate of the Rate that Payment customers via Paywise from 1 of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_pyw_rbh": {
+      "description": "The rate of the Rate that Payment customers via Robinhood Platform from 1 of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_qr_29": {
+      "description": "The average rate of the customer Payment with Transaction Type type QR 29 from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_qr_30": {
+      "description": "The average rate of the customer Payment with Transaction Type type QR 30 from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_qr_cs": {
+      "description": "The average rate of the customer Payment with Transaction Type type QRCS from the 1st day of the month to the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_weight": {
+      "description": "The average rate of all Payment customers (Weigthed Average with Point AMOUNT) from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_sku_weight": {
+      "description": "The average rate of the customer Payment via X-Store (Weigthed Average with Point AMOUNT) from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_qr_weight": {
+      "description": "The rate of the Rate that Payment customers via Scan & Pay (Weigted Average with Point Amount paid from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_pyw_weight": {
+      "description": "The average rate of the Payment customers via Paywise (Weigthed Average with Point AMOUNT) from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_pyw_rbh_weight": {
+      "description": "The average rate of the Payment customers via Robinhood Platform (Weigthed Average with Point AMOUNT) from 1 day of the month to the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_qr_29_weight": {
+      "description": "The average rate of the customer Payment with Transaction Type type QR 29 (Weigthed Average with Point Amount paid from 1 day of the month to the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_qr_30_weight": {
+      "description": "The average rate of the customer Payment with Transaction Type type QR 30 (Weigthed Average with Point Amount paid from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_point_per_baht_pay_qr_cs_weight": {
+      "description": "The rate of the Rate that the customer payment with the type of transaction type QRCS (Weigted Average with Point Amount paid from 1 day of the month to the latest transaction date.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay": {
+      "description": "The average of the Cost Per Point at all Payment customers from 1 of the month until the latest transaction day.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_sku": {
+      "description": "The Cost Per Point, the Payment customers via X-Store from 1 of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_qr": {
+      "description": "The average of Cost Per Point at Payment customers via Scan & Pay from 1 of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_pyw": {
+      "description": "The average of the Cost Per Point that Payment customers via Paywise from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_pyw_rbh": {
+      "description": "The average of the Cost Per Point that Payment customers via Robinhood Platform from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_qr_29": {
+      "description": "The average of Cost Per Point at Payment customers with Transaction Type type QR 29 from the 1st day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_qr_30": {
+      "description": "The average of Cost Per Point at Payment customers with Transaction Type type QR 30 from the 1st day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_qr_cs": {
+      "description": "The average of Cost Per Point at Payment customers with Transaction Type type QRCS from the 1st day of the month to the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_weight": {
+      "description": "The average of the Cost Per Point at all Payment customers (Weigted Average with Point Amount paid from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_sku_weight": {
+      "description": "The average of the Cost Per Point that the Payment customers via X-Store (Weigthed Average with Point AMOUNT) from 1 day of the month to the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_qr_weight": {
+      "description": "The average of Cost Per Point at Payment customers via Scan & Pay (Weigted Average with Point Amount paid from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_pyw_weight": {
+      "description": "The average of the Cost Per Point at Paywise (Weigthed Average with Point AMOUNT) from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_pyw_rbh_weight": {
+      "description": "The average of the Cost Per Point that Payment customers via Robinhood Platform (Weigthed Average with Point AMOUNT) from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_qr_29_weight": {
+      "description": "The average of Cost Per Point at Payment Customers with Transaction Type type QR 29 (Weigted Average with Point AMOUNT) from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_qr_30_weight": {
+      "description": "The average of the Cost Per Point at Payment Customers with Transaction Type type QR 30 (Weigted Average with Point AMOUNT) from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_rate_baht_per_point_pay_qr_cs_weight": {
+      "description": "The average of Cost Per Point at Payment Customers with Transaction Type type QRCS (Weigthed Average with Point Amount paid from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_n_topup_point": {
+      "description": "The number of transactions caused by topups from 1 of the month to the latest transaction day.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_topup_point_onboard": {
+      "description": "The number of Transaction Topup onboard from 1 of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_topup_point_onetime": {
+      "description": "Number of Transaction Topup Manual from 1 of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_topup_point_auto": {
+      "description": "Auto converse transaction topg from 1 of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_transfer_point_out": {
+      "description": "The number of transactions that transferred to other users from 1 of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_purchase": {
+      "description": "The number of transactions caused by payment from 1 day of the month to the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_purchase_sku": {
+      "description": "The number of transactions caused by payment via X-Store from 1 of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_purchase_qr": {
+      "description": "The number of transactions caused by payment via Scan & Pay from the 1st day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_purchase_pyw": {
+      "description": "The number of transactions caused by payment via Paywise from the 1st day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_purchase_pyw_rbh": {
+      "description": "The number of transactions caused by payment via Robinhood Platform from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_purchase_qr_29": {
+      "description": "The number of transactions caused by payment via Scan & Pay with Transaction Type type QR 29 from the 1st day of the month to the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_purchase_qr_30": {
+      "description": "The number of transactions caused by payment via Scan & Pay with Transaction Type QR 30 from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_purchase_qr_cs": {
+      "description": "The number of transactions caused by payment via Scan & Pay with Transaction Type QRCS from 1 day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_point_payment_p_only": {
+      "description": "The number of transactions caused by payment by Payment Method is the use of Point Only from the 1st day of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_n_point_payment_p_casa": {
+      "description": "The number of transactions caused by payment by Payment Method is the use of Point, plus payment by transferring money.From the 1st day of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "mtd1_n_point_payment_p_cc": {
+      "description": "The number of transactions caused by payment by Payment Method is to use Point, plus payment through credit cards.From the 1st day of the month until the latest transaction",
+      "classes": [
+        "Transaction_Metrics",
+        "Point_Rate_Metrics"
+      ]
+    },
+    "amt_point_topup_auto_cardx": {
+      "description": "Point Topup number onboard of Cardx customers",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "amt_point_topup_auto_wealth": {
+      "description": "Point Topup number onboard of wealth customers",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "amt_point_topup_extnl": {
+      "description": "Point Topup number via External Partner",
+      "classes": [
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_amt_point_topup_auto_cardx": {
+      "description": "The Auto Converse Point Topup number of Cardx customers from 1 of the month until the latest transaction.",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "mtd1_amt_point_topup_auto_wealth": {
+      "description": "The Auto Converse Point Topup number of Wealth customers from 1 of the month until the latest transaction.",
+      "classes": [
+        "Customer_Metrics"
+      ]
+    },
+    "mtd1_amt_point_topup_extnl": {
+      "description": "Point Topup number via partner from 1 of the month until the latest transaction day",
+      "classes": [
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_n_topup_point_auto_cardx": {
+      "description": "The number of transactions caused by the Auto Converse top of the Cardx customer group from 1 of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_topup_point_auto_wealth": {
+      "description": "The number of transactions caused by the Auto Converse top of the Wealth customer group from 1 of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "mtd1_n_topup_point_extnl": {
+      "description": "The number of transactions caused by the auto converse top via partner from the 1st day of the month to the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_ncust_partner": {
+      "description": "The number of users obtained from partner companiesCollecting the 1st day of the month",
+      "classes": [
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_ncust_partner_new": {
+      "description": "The number of users that register comes from partner companies.Collecting the 1st day of the month",
+      "classes": [
+        "Date_information"
+      ]
+    },
+    "n_topup_point_auto_cardx": {
+      "description": "The number of Transaction Topup Auto Converse of Cardx customers",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_topup_point_auto_wealth": {
+      "description": "The number of Transaction Topup Auto Converse of Wealth Customers",
+      "classes": [
+        "Transaction_Metrics"
+      ]
+    },
+    "n_topup_point_extnl": {
+      "description": "Number of Transaction Topup via External Partner",
+      "classes": [
+        "External_Partner_Metrics"
+      ]
+    },
+    "ncust_partner": {
+      "description": "The number of users obtained from the partner company that day",
+      "classes": [
+        "External_Partner_Metrics"
+      ]
+    },
+    "ncust_partner_new": {
+      "description": "The number of users that register came from the partner company that day.",
+      "classes": [
+        "External_Partner_Metrics"
+      ]
+    },
+    "n_transfer_point_out_extnl": {
+      "description": "The number of transactions that transferred to other users via External Partner.",
+      "classes": [
+        "Transaction_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_n_transfer_point_out_extnl": {
+      "description": "The number of transactions transferred to other users via Partner from the 1st day until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "amt_point_transfer_out_extnl": {
+      "description": "The number of points that transferred to other User via External Partner",
+      "classes": [
+        "External_Partner_Metrics"
+      ]
+    },
+    "mtd1_amt_point_transfer_out_extnl": {
+      "description": "The number of points that transferred to other users via Partner from 1 of the month until the latest transaction.",
+      "classes": [
+        "Transaction_Metrics",
+        "Customer_Metrics",
+        "Point_Rate_Metrics",
+        "External_Partner_Metrics"
+      ]
+    },
+    "_dl_load_ts": {
+      "description": "Data download date",
+      "classes": [
+        "Date_information"
+      ]
+    },
+    "_date": {
+      "description": "Transaction date",
+      "classes": [
+        "Transaction_Metrics",
+        "Date_information"
+      ]
+    }
+  }
+}

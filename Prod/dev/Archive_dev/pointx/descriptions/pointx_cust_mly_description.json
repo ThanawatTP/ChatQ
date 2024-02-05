@@ -1,0 +1,485 @@
+{
+  "table": "pointx_cust_mly",
+  "description": "The table provides a comprehensive monthly overview of customer engagement within the app, \ncapturing data related to accumulated points, usage patterns, and relevant metrics, \nfacilitating in-depth analysis of user behavior and app performance.",
+  "columns": {
+    "rm_key": {
+      "description": "The term RMKEY can stand for various things depending on the context, and without specific information, it's challenging to provide a precise description. If you have a specific domain or context in mind, please provide additional details so that I can offer a more accurate description within the token limit.",
+      "classes": [
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "price_purchase_sku_pointvalue": {
+      "description": "The value of POINT using Payment via X-Store.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "amt_point_pay_pyw": {
+      "description": "The number of points caused by payment via Paywise.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "n_purchase_sku": {
+      "description": "The number of times caused by payment via X-Store.",
+      "classes": [
+        "PaymentMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "date_from_last_point_topup_auto": {
+      "description": "The latest day with Auto Converse Topup",
+      "classes": [
+        "CustomerEngagementMetrics"
+      ]
+    },
+    "date_from_last_point_topup_onetime": {
+      "description": "The latest day with Manual top",
+      "classes": [
+        "CustomerEngagementMetrics"
+      ]
+    },
+    "price_purchase_pyw_itemprice": {
+      "description": "Total value that uses Payment via Paywise.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "price_purchase_qr_pointvalue": {
+      "description": "The value of POINT using Payment via Scan & Pay.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "n_purchase_qr_cs": {
+      "description": "The number of times caused by payment via Scan & Pay type QRCS.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "date_from_last_point_transfer_out": {
+      "description": "The latest day that has been transferred to other users",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "amt_point_topup": {
+      "description": "The number of points caused by all topups",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "pointx_id": {
+      "description": "pointx id",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "account_number": {
+      "description": "account number",
+      "classes": [
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "price_purchase_qr_itemprice": {
+      "description": "Total value that uses Payment via Scan & Pay.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "days_from_last_purchase_qr": {
+      "description": "The number of days from the latest day that has been paidment via Scan & Pay to the present.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "price_purchase_pyw_money": {
+      "description": "The amount of payment via Paywise",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "n_purchase_qr_30": {
+      "description": "The number of times caused by payment via Scan & Pay type QR 30.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "days_purchase_sku": {
+      "description": "Number of days to payment via X-Store",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "date_from_last_purchase_qr": {
+      "description": "The latest day of payment via Scan & Pay.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "amt_point_pay_qr": {
+      "description": "The number of points caused by payment via Scan & Pay.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "amt_point_topup_onetime": {
+      "description": "Number of Point Topup Manual",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "date_from_last_purchase": {
+      "description": "The latest day with payment",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "n_purchase_qr": {
+      "description": "The number of times caused by payment via Scan & Pay.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "date_from_last_financial": {
+      "description": "The latest day with Financial Transaction",
+      "classes": [
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "date_from_last_purchase_sku": {
+      "description": "The latest day of payment via X-Store.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "ntx": {
+      "description": "Total number of transactions",
+      "classes": [
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "price_purchase_sku_itemprice_retail": {
+      "description": "Retail Price of X-Store",
+      "classes": [
+        "CustomerEngagementMetrics"
+      ]
+    },
+    "days_purchase": {
+      "description": "The number of days that came to payment all",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "n_purchase_pyw": {
+      "description": "The number of times caused by payment via Paywise.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "days_purchase_pyw": {
+      "description": "The number of days to payment via Paywise",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "days_from_last_purchase_pyw": {
+      "description": "The number of days from the latest day that has been payment through Paywiset to the present.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "price_purchase_pyw_pointvalue": {
+      "description": "Value of POINT using Payment through Paywise",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "amt_point_topup_onboard": {
+      "description": "Point Topup number onboard",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "ntx_financial_out": {
+      "description": "The number of financial transactions that have been paid out.",
+      "classes": [
+        "PaymentMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "n_transfer_point_out": {
+      "description": "Number of times received from other users",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "price_purchase_sku_itemprice_vendor": {
+      "description": "Vendor Price of X-Store",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "days_from_last_purchase_sku": {
+      "description": "The number of days from the latest date of Payment via X-Store to the present.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "amt_point_payment_p_casa": {
+      "description": "The number of points caused by payment by Payment Method is the use of Point, plus payment by transferring money.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics"
+      ]
+    },
+    "days_from_last_visit": {
+      "description": "Number of days from the latest app entering the App to the present",
+      "classes": [
+        "UserActivityMetrics"
+      ]
+    },
+    "amt_point_pay_qr_30": {
+      "description": "The number of points caused by payment via Scan & Pay type QR 30.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics"
+      ]
+    },
+    "cust_ptx_tenure_mth": {
+      "description": "Number of months from Register Date to the present",
+      "classes": [
+        "CustomerEngagementMetrics"
+      ]
+    },
+    "customer_status": {
+      "description": "customer status (ACTIVE,PENDING)",
+      "classes": [
+        "CustomerProfileMetrics"
+      ]
+    },
+    "ntx_login": {
+      "description": "All transactions that are logged",
+      "classes": [
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "amt_point_pay_qr_cs": {
+      "description": "The number of points caused by payment via Scan & Pay type QRCS.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "days_transfer_point_out": {
+      "description": "Number of days enteredThat transferred to other users",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "days_from_last_financial": {
+      "description": "The number of days from the latest day with Financial Transaction to the present day.",
+      "classes": [
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "n_purchase": {
+      "description": "The number of times caused by all payment.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "rmid": {
+      "description": "The term RMID can stand for various things depending on the context, and without specific information, it's challenging to provide a precise description. If you have a specific domain or context in mind, please provide additional details so that I can offer a more accurate description within the token limit.",
+      "classes": [
+        "CustomerProfileMetrics"
+      ]
+    },
+    "amt_point_balance": {
+      "description": "point remain",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "customer_type": {
+      "description": "customer sign up  (Easy,Non Easy,GUEST)",
+      "classes": [
+        "CustomerProfileMetrics"
+      ]
+    },
+    "date_from_last_visit": {
+      "description": "The latest day that entered the App",
+      "classes": [
+        "UserActivityMetrics"
+      ]
+    },
+    "amt_point_pay_sku": {
+      "description": "The number of points caused by payment via X-Store.",
+      "classes": [
+        "CustomerEngagementMetrics",
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "days_from_last_point_topup_onetime": {
+      "description": "The number of days from the latest day with Manual top to the present.",
+      "classes": [
+        "UserActivityMetrics"
+      ]
+    },
+    "days_from_last_point_topup_auto": {
+      "description": "The number of days from the latest day with Auto Converse top up to the present.",
+      "classes": [
+        "CustomerEngagementMetrics"
+      ]
+    },
+    "price_purchase_sku_itemprice_point": {
+      "description": "Actual Point Required Per unit of X-Store",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "n_payment_p_only": {
+      "description": "The number of times caused by payment by Payment Method is the use of Point Only.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "amt_point_transfer_out": {
+      "description": "The number of points that transferred to other users",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "price_purchase_qr_money": {
+      "description": "The amount of payment via Scan & Pay",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "date_from_last_purchase_pyw": {
+      "description": "The latest day of payment via Paywise",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "amt_point_payment_p_only": {
+      "description": "The number of points caused by payment by Payment Method is the use of Point Only.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics"
+      ]
+    },
+    "month_id": {
+      "description": "yyyy-MM",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "n_payment_p_cc": {
+      "description": "The number of times caused by Payment by Payment Method is the use of POINT, plus payment via credit cards.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "amt_point_payment_p_cc": {
+      "description": "The number of points caused by payment by Payment Method is the use of Point, plus payment through credit cards.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "days_from_last_point_transfer_out": {
+      "description": "The number of days from the latest day that has been transferred to other users to the present day.",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "ntx_financial": {
+      "description": "Total amount of financial transaction",
+      "classes": [
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "cust_ptx_tenure": {
+      "description": "Number of days from Register Date to the present",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "n_payment_p_casa": {
+      "description": "The number of times caused by Payment by Payment Method is the use of POINT, plus the payment by transferring money.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "amt_point_pay_qr_29": {
+      "description": "The number of points caused by payment via Scan & Pay type QR 29.",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics"
+      ]
+    },
+    "days_purchase_qr": {
+      "description": "Number of days to payment via Scan & Pay",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "amt_point_topup_auto": {
+      "description": "Auto Converse Point Topup number",
+      "classes": [
+        "PointTransferMetrics"
+      ]
+    },
+    "days_from_last_purchase": {
+      "description": "The number of days from the latest day that has been paidment to the present.",
+      "classes": [
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "price_purchase_sku_itemprice_discount": {
+      "description": "Ex-Store product discount",
+      "classes": [
+        "FinancialTransactionMetrics"
+      ]
+    },
+    "price_purchase_sku_money": {
+      "description": "The amount of payment via X-Store",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "n_purchase_qr_29": {
+      "description": "The number of times caused by payment via Scan & Pay type QR 29.",
+      "classes": [
+        "PaymentMetrics"
+      ]
+    },
+    "amt_point_pay": {
+      "description": "The number of points caused by all payment",
+      "classes": [
+        "PaymentMetrics",
+        "PointTransferMetrics",
+        "FinancialTransactionMetrics"
+      ]
+    }
+  }
+}

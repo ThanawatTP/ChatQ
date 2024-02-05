@@ -1,0 +1,29 @@
+{
+  "table": "happy_hour_member",
+  "description": "This table represents member participation in happy hour events, including the happy hour event identifier, member identifier, and total amount spent during the happy hour.",
+  "columns": {
+    "HH_ID": {
+      "description": "Identifier of the happy hour event",
+      "classes": [
+        "ParticipationDetails",
+        "SpendingMetrics",
+        "EventDetails"
+      ]
+    },
+    "Member_ID": {
+      "description": "Identifier of the member participating in the happy hour",
+      "classes": [
+        "ParticipationDetails",
+        "SpendingMetrics",
+        "MemberDetails"
+      ]
+    },
+    "Total_amount": {
+      "description": "Total amount spent by the member during the happy hour",
+      "classes": [
+        "ParticipationDetails",
+        "SpendingMetrics"
+      ]
+    }
+  }
+}

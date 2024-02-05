@@ -1,0 +1,1108 @@
+{
+  "table": "pointx_fbs_rpt_dly",
+  "description": "Table records user interactions with the PointX app daily, capturing events such as app opens and deletions, \nproviding key insights into user behavior, app version usage, and device characteristics ",
+  "columns": {
+    "event_date": {
+      "description": "The date on which the event was logged (YYYYMMDD format in the registered timezone of your app).",
+      "classes": [
+        "GeoLocationMetrics",
+        "EventDimensions"
+      ]
+    },
+    "event_month": {
+      "description": "The year month on which the event was logged (YYYY-MM format).",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "event_bundle_sequence_id": {
+      "description": "The sequential ID of the bundle in which these events were uploaded.",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "event_timestamp": {
+      "description": "The time (in microseconds, UTC) at which the event was logged on the client.",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "event_name": {
+      "description": "The name of the event activity that occurred from the user's use.",
+      "classes": [
+        "UserInteractionMetrics",
+        "EventDimensions"
+      ]
+    },
+    "customer_id": {
+      "description": "customer identification same values as pointx id in application",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "user_pseudo_id": {
+      "description": "The pseudonymous id (e.g., app instance ID) for the user.",
+      "classes": [
+        "UserInteractionMetrics",
+        "AppInfoMetrics"
+      ]
+    },
+    "user_id": {
+      "description": "The user ID set via the setUserId API.",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "event_previous_timestamp": {
+      "description": "The time (in microseconds, UTC) at which the event was previously logged on the client.",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "event_value_in_usd": {
+      "description": "The currency-converted value (in USD) of the event's \"value\" parameter.",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "event_server_timestamp_offset": {
+      "description": "Timestamp offset between collection time and upload time in micros.",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "privacy_info_analytics_storage": {
+      "description": "Whether Analytics storage is enabled for the user.",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "privacy_info_ads_storage": {
+      "description": "Whether ad targeting is enabled for a user.",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "privacy_info_uses_transient_token": {
+      "description": "Whether a web user has denied Analytics storage and the developer has enabled measurement without cookies based on transient tokens in server data.",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "user_properties_ga_session_number": {
+      "description": "Session number identifies the number of sessions that a user has started up to the current session (e.g., a user's third or fifth session on your site).",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "user_properties_ga_session_number_set_timestamp_micros": {
+      "description": "Timestamp of sessions that a user has started up to the current session (e.g., a user's third or fifth session on your site).",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "user_properties_ga_session_id": {
+      "description": "Session ID identifies the session that an event came from. For example, two different session IDs are generated when a user has two separate sessions on your site.",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "user_properties_ga_session_id_set_timestamp_micros": {
+      "description": "Timestamp that an event came from. For example, two different session IDs are generated when a user has two separate sessions on your site.",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "user_properties_first_open_time": {
+      "description": "Timestamp of user's first open",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "user_properties_first_open_time_set_timestamp_micros": {
+      "description": "Timestamp of user's first open in micros timestamp",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "user_first_touch_timestamp": {
+      "description": "Timestamp of user's first touch",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "user_ltv_revenue": {
+      "description": "The Lifetime Value (revenue) of the user. This field is not populated in intraday tables.",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "user_ltv_currency": {
+      "description": "The Lifetime Value (currency) of the user. This field is not populated in intraday tables.",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "device_category": {
+      "description": "The device category (mobile, tablet, desktop).",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "device_mobile_brand_name": {
+      "description": "The device brand name.",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "device_mobile_model_name": {
+      "description": "The device model name.",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "device_mobile_marketing_name": {
+      "description": "The device marketing name.",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "device_mobile_os_hardware_model": {
+      "description": "The device model information retrieved directly from the operating system.",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "device_operating_system": {
+      "description": "The operating system of the device.",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "device_operating_system_version": {
+      "description": "The OS version.",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "device_vendor_id": {
+      "description": "IDFV (present only if IDFA is not collected).",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "device_advertising_id": {
+      "description": "Advertising ID/IDFA.",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "device_language": {
+      "description": "The OS language.",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "device_is_limited_ad_tracking": {
+      "description": "The device's Limit Ad Tracking setting.",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "device_time_zone_offset_seconds": {
+      "description": "The offset from GMT in seconds.",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "device_browser": {
+      "description": "The browser in which the user viewed content.",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "device_browser_version": {
+      "description": "The version of the browser in which the user viewed content.",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "device_web_info_browser": {
+      "description": "The browser in which the user viewed content",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "device_web_info_browser_version": {
+      "description": "The version of the browser in which the user viewed content.",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "device_web_info_hostname": {
+      "description": "The hostname associated with the logged event.",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "geo_continent": {
+      "description": "The continent from which events were reported, based on IP address.",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "geo_country": {
+      "description": "The country from which events were reported, based on IP address.",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "geo_region": {
+      "description": "The region from which events were reported, based on IP address.",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "geo_city": {
+      "description": "The city from which events were reported, based on IP address.",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "geo_sub_continent": {
+      "description": "The subcontinent from which events were reported, based on IP address.",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "geo_metro": {
+      "description": "The metro from which events were reported, based on IP address.",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "app_info_id": {
+      "description": "The package name or bundle ID of the app.",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "app_info_version": {
+      "description": "The app's versionName (Android) or short bundle version.",
+      "classes": [
+        "UserInteractionMetrics",
+        "DeviceInformation",
+        "AppInfoMetrics"
+      ]
+    },
+    "app_info_install_store": {
+      "description": "The store that installed the app.",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "app_info_firebase_app_id": {
+      "description": "The Firebase App ID associated with the app",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "app_info_install_source": {
+      "description": "The source that installed the app.",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "traffic_source_name": {
+      "description": "Name of the marketing campaign that first acquired the user. This field is not populated in intraday tables.",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "traffic_source_medium": {
+      "description": "Name of the medium (paid search, organic search, email, etc.) that first acquired the user. This field is not populated in intraday tables.",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "traffic_source_source": {
+      "description": "Name of the network that first acquired the user. This field is not populated in intraday tables.",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "stream_id": {
+      "description": "The numeric ID of the stream.",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "platform": {
+      "description": "The platform on which the app was built.",
+      "classes": [
+        "DeviceInformation",
+        "AppInfoMetrics"
+      ]
+    },
+    "event_dimensions_hostname": {
+      "description": "Includes the subdomain and domain names of a URL; for example, the Host Name of www.example.com/contact.html is www.example.com.",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "ecommerce": {
+      "description": "A record of information about ecommerce. (Currenntly collect as string)",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "items": {
+      "description": "A repeated record of items included in this event. (Currenntly collect as string)",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "source_date": {
+      "description": "Source date of firebase file name",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "address_id": {
+      "description": "Delivery address identification",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "auto_earn_display": {
+      "description": "In case of event delete account the values of auto_earn flag",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "banner_description": {
+      "description": "Highlight banner description",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "banner_rank": {
+      "description": "Highlight banner item index",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "banner_title": {
+      "description": "Highlight banner title",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "campaign": {
+      "description": "Firebase's campagin name",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "campaign_info_source": {
+      "description": "Firebase's campagin source information",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "card_sub_product": {
+      "description": "Possible Values : SCB Beyond , SCB Toyota platinum",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "change_language": {
+      "description": "Possible Values : EN, TH",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "coupon_id": {
+      "description": "Coupon Identification Number",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "customer_device_lat": {
+      "description": "Customer's device latitude",
+      "classes": [
+        "DeviceInformation",
+        "GeoLocationMetrics"
+      ]
+    },
+    "customer_device_long": {
+      "description": "Customer's device longtitude",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "customer_lat": {
+      "description": "Customer's latitude",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "customer_long": {
+      "description": "Customer's longtitude",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "customer_type": {
+      "description": "Customer Type e.g. guest, N/A",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "deal_title": {
+      "description": "Deal of the day title",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "deal_type": {
+      "description": "Deal of the day type",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "debug_event": {
+      "description": "Debug event",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "deleteacount_button": {
+      "description": "Delete account button",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "delivery_address": {
+      "description": "Delivery address ",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "delivery_fee": {
+      "description": "Delivery fee e.g. Fee ",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "delivery_option": {
+      "description": "Delivery option e.g. Standard Shipping ",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "delivery_type": {
+      "description": "Delivery type e.g. Standard Shipping ",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "e_coupon_display": {
+      "description": "e coupon display",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "each_point_card": {
+      "description": "Point in each credit cards, This value in array format",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "ecatalog_list": {
+      "description": "ecatalog list",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "ecatalog_rank": {
+      "description": "ecatalog rank",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "ecoupon_rank": {
+      "description": "ecoupon rank",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "ecoupon_title": {
+      "description": "ecoupon title",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "engaged_session_event": {
+      "description": "Engaged session event",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "engagement_time_msec": {
+      "description": "Engagement time millisecond",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "entrances": {
+      "description": "Number of entrance",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "error_message": {
+      "description": "Error message",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "error_value": {
+      "description": "Error value",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "event_id": {
+      "description": "Event Identification",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "fatal": {
+      "description": "Fatal",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "firebase_conversion": {
+      "description": "Firebase conversion",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "firebase_error": {
+      "description": "Firebase error",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "firebase_event_origin": {
+      "description": "Firebase event origin",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "firebase_previous_class": {
+      "description": "Firebase previous class",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "firebase_previous_id": {
+      "description": "Firebase previous identification",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "firebase_previous_screen": {
+      "description": "Firebase previous screen",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "firebase_screen": {
+      "description": "Firebase screen",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "firebase_screen_class": {
+      "description": "Firebase screen claass",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "firebase_screen_id": {
+      "description": "Firebase screen identification",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "flashdeals_rank": {
+      "description": "Flash deals rank",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "flashdeals_title": {
+      "description": "Flash deals title",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "from_customer_name": {
+      "description": "Full customer name who transferred point to another customer",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "from_customer_profile_name": {
+      "description": "Customer profile name in application  who transferred point to another customer",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "ga_session_id": {
+      "description": "Session Identification",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "ga_session_number": {
+      "description": "Sesion Number",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "id": {
+      "description": "Category Identification",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "ignore_referrer": {
+      "description": "Ignore referer",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "item_code": {
+      "description": "Item code",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "latitude": {
+      "description": "Latitude",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "longitude": {
+      "description": "Longitude",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "link_classes": {
+      "description": "Link classes",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "link_domain": {
+      "description": "Link domain",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "link_url": {
+      "description": "Link url",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "list_card_sub_product": {
+      "description": "List card sub product",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "list_each_point_card": {
+      "description": "List each point card",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "medium": {
+      "description": "Medium",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "merchant_id": {
+      "description": "Merchant id",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "message_type": {
+      "description": "Message type",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "offer_type": {
+      "description": "Offer type",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "order_id": {
+      "description": "Order id",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "order_status": {
+      "description": "Order status",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "outbound": {
+      "description": "Outbound",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "page": {
+      "description": "Page",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "page_location": {
+      "description": "Page location",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "page_referrer": {
+      "description": "Page referrer",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "page_title": {
+      "description": "Page title",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "payment_method": {
+      "description": "Payment method",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "percent_scrolled": {
+      "description": "Percent scrolled",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "place_id": {
+      "description": "Place id",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "place_lat": {
+      "description": "Place lat",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "place_long": {
+      "description": "Place long",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "place_name": {
+      "description": "Place name",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "point_balance_display": {
+      "description": "Point balance display",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "points": {
+      "description": "Points",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "points_per_unit": {
+      "description": "Points per unit",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "points_remaining": {
+      "description": "Points remaining",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "previous_app_version": {
+      "description": "Previous app version",
+      "classes": [
+        "UserInteractionMetrics",
+        "AppInfoMetrics"
+      ]
+    },
+    "previous_first_open_count": {
+      "description": "Previous first open count",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "previous_os_version": {
+      "description": "Previous os version",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "primary_address": {
+      "description": "Primary address",
+      "classes": [
+        "GeoLocationMetrics"
+      ]
+    },
+    "product_id": {
+      "description": "Product id",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "quantity": {
+      "description": "Quantity",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "reason_id": {
+      "description": "Reason id",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "recommendedForYou_rank": {
+      "description": "RecommendedForYou rank",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "search_list_id": {
+      "description": "Search list id",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "search_list_id_scan_and_pay": {
+      "description": "Search list id scan and pay",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "search_list_id_xstore": {
+      "description": "Search list id xstore",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "session_engaged": {
+      "description": "Session engaged",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "shop_list_id": {
+      "description": "Shop list id",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "sku_catagory_name": {
+      "description": "Sku catagory name",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "sku_group_type": {
+      "description": "Sku group type",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "sku_id": {
+      "description": "The SKU (Stock Keeping Unit) ID serves as a unique identifier assigned to a specific product variant, enabling efficient inventory management and tracking within a retail or e-commerce system.",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "source": {
+      "description": "Source",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "source_page_name": {
+      "description": "Source page name",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "stock_code": {
+      "description": "Stock code",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "system_app": {
+      "description": "System app",
+      "classes": [
+        "UserInteractionMetrics",
+        "DeviceInformation",
+        "AppInfoMetrics"
+      ]
+    },
+    "system_app_update": {
+      "description": "System app update",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "tab_name": {
+      "description": "Tab name",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "term": {
+      "description": "Term",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "text_search": {
+      "description": "Text search",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "timestamp": {
+      "description": "Timestamp",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "to_customer_name": {
+      "description": "To customer name",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "to_customer_profile_name": {
+      "description": "To customer profile name",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "toggle": {
+      "description": "Toggle",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "total_amount": {
+      "description": "Total amount",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "total_point": {
+      "description": "Total point",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "total_points": {
+      "description": "Total points",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "transaction_id": {
+      "description": "Transaction id",
+      "classes": [
+        "EventDimensions"
+      ]
+    },
+    "transaction_status": {
+      "description": "Transaction status",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "transaction_type": {
+      "description": "Transaction type",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "unable_to_proceed": {
+      "description": "Unable to proceed",
+      "classes": [
+        "DeviceInformation"
+      ]
+    },
+    "update_with_analytics": {
+      "description": "Update with analytics",
+      "classes": [
+        "TrafficSourceMetrics"
+      ]
+    },
+    "client_code": {
+      "description": "Client code",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "client_member_id": {
+      "description": "Client member id",
+      "classes": [
+        "AppInfoMetrics"
+      ]
+    },
+    "_dl_load_ts": {
+      "description": "Date of data loading",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    },
+    "_date": {
+      "description": "Transaction's occurrence date",
+      "classes": [
+        "UserInteractionMetrics"
+      ]
+    }
+  }
+}
