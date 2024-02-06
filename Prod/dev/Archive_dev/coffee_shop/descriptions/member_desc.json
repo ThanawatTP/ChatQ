@@ -1,49 +1,13 @@
 {
-  "table": "member",
-  "description": "This table contains information about members, including their name, membership card details, age, time of purchase, level of membership, and address.",
-  "columns": {
-    "Member_ID": {
-      "description": "Unique identifier for the member",
-      "classes": [
-        "MemberDetails"
-      ]
-    },
-    "Name": {
-      "description": "Name of the member",
-      "classes": [
-        "MemberDetails"
-      ]
-    },
-    "Membership_card": {
-      "description": "Details of the membership card",
-      "classes": [
-        "MemberDetails"
-      ]
-    },
-    "Age": {
-      "description": "Age of the member",
-      "classes": [
-        "MemberDetails"
-      ]
-    },
-    "Time_of_purchase": {
-      "description": "Date and time of purchase",
-      "classes": [
-        "MemberDetails",
-        "SpendingMetrics"
-      ]
-    },
-    "Level_of_membership": {
-      "description": "Level or type of membership",
-      "classes": [
-        "MemberDetails"
-      ]
-    },
-    "Address": {
-      "description": "Address of the member",
-      "classes": [
-        "MemberDetails"
-      ]
+    "table": "member",
+    "description": "This table contains information about members, including their name, membership card details, age, time of purchase, level of membership, and address.",
+    "columns": {
+      "Member_ID": "Unique identifier for the member",
+      "Name": "Name of the member",
+      "Membership_card": "Details of the membership card",
+      "Age": "Age of the member",
+      "Time_of_purchase": "Date and time of purchase",
+      "Level_of_membership": "Level or type of membership",
+      "Address": "Address of the member"
     }
-  }
 }

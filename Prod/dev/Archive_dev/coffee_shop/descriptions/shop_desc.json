@@ -1,36 +1,11 @@
 {
-  "table": "shop",
-  "description": "This table contains information about shops, including their address, number of staff, score, and opening year.",
-  "columns": {
-    "Shop_ID": {
-      "description": "Unique identifier for the shop",
-      "classes": [
-        "ShopDetails"
-      ]
-    },
-    "Address": {
-      "description": "Address of the shop",
-      "classes": [
-        "ShopDetails"
-      ]
-    },
-    "Num_of_staff": {
-      "description": "Number of staff members working at the shop",
-      "classes": [
-        "ShopDetails"
-      ]
-    },
-    "Score": {
-      "description": "Score or rating of the shop",
-      "classes": [
-        "ShopDetails"
-      ]
-    },
-    "Open_Year": {
-      "description": "Year when the shop opened",
-      "classes": [
-        "ShopDetails"
-      ]
+    "table": "shop",
+    "description": "This table contains information about shops, including their address, number of staff, score, and opening year.",
+    "columns": {
+      "Shop_ID": "Unique identifier for the shop",
+      "Address": "Address of the shop",
+      "Num_of_staff": "Number of staff members working at the shop",
+      "Score": "Score or rating of the shop",
+      "Open_Year": "Year when the shop opened"
     }
-  }
 }

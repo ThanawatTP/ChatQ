@@ -1,35 +1,10 @@
 {
-  "table": "happy_hour",
-  "description": "This table contains information about happy hours at shops, including the shop's identifier, the month of the happy hour, and the number of staff in charge.",
-  "columns": {
-    "HH_ID": {
-      "description": "Unique identifier for the happy hour event",
-      "classes": [
-        "EventDetails",
-        "StaffMetrics"
-      ]
-    },
-    "Shop_ID": {
-      "description": "Identifier of the shop hosting the happy hour",
-      "classes": [
-        "EventDetails",
-        "StaffMetrics",
-        "ShopDetails"
-      ]
-    },
-    "Month": {
-      "description": "Month in which the happy hour takes place",
-      "classes": [
-        "EventDetails",
-        "StaffMetrics"
-      ]
-    },
-    "Num_of_staff_in_charge": {
-      "description": "Number of staff members in charge during the happy hour",
-      "classes": [
-        "EventDetails",
-        "StaffMetrics"
-      ]
+    "table": "happy_hour",
+    "description": "This table contains information about happy hours at shops, including the shop's identifier, the month of the happy hour, and the number of staff in charge.",
+    "columns": {
+      "HH_ID": "Unique identifier for the happy hour event",
+      "Shop_ID": "Identifier of the shop hosting the happy hour",
+      "Month": "Month in which the happy hour takes place",
+      "Num_of_staff_in_charge": "Number of staff members in charge during the happy hour"
     }
-  }
 }
