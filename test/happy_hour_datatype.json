@@ -1,0 +1,20 @@
+{
+  "JOIN_KEY": {
+    "PK": [
+      "HH_ID",
+      "Shop_ID",
+      "Month"
+    ],
+    "FK": {
+      "Shop_ID": {
+        "shop": "Shop_ID"
+      }
+    }
+  },
+  "COLUMNS": {
+    "HH_ID": "INT",
+    "Shop_ID": "INT",
+    "Month": "TEXT",
+    "Num_of_shaff_in_charge": "INT"
+  }
+}

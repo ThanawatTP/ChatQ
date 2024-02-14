@@ -1,0 +1,18 @@
+{
+  "JOIN_KEY": {
+    "PK": [
+      "HH_ID",
+      "Member_ID"
+    ],
+    "FK": {
+      "Member_ID": {
+        "member": "Member_ID"
+      }
+    }
+  },
+  "COLUMNS": {
+    "HH_ID": "INT",
+    "Member_ID": "INT",
+    "Total_amount": "REAL"
+  }
+}
