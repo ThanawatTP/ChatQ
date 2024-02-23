@@ -169,6 +169,44 @@ class SchemaLinking():
                         used_schema[table][col] = 0.5
 
         return used_schema
+    
+    def old_filter_schema(self, question:str, 
+                            tables:list,
+                            column_threshold:float = 0.1,
+                            max_n:int = 10):
+        
+        question_emb = encode(question)
+        used_schemas = {}
+        found_table = []            # table found in question
+        found_columns = []          # column found in question
+
+        # string matching with table, column and question tokens
+        for token in question.split():
+            
+            if token.lower() in self.schema_tables_lower:
+                print("Table string match  ---->", token)
+                found_table.append(token)
+            elif token.lower() in self.schema_columns_lower:
+                print("Column string match  ---->", token)
+                found_columns.append(token)
+
+        for table in tables:
+            if table in found_table: table_offset = 0.1         # offset score for selected column in this table
+            else: table_offset = 0
+            used_schemas[table] = {}
+            for i, row in self.column_info_df[self.column_info_df['Table'] == table][['Column', 'Vector']].iterrows():
+                column = row['Column']
+                column_vector = row['Vector']
+                sim_score = cos_sim(column_vector, question_emb)
+                if sim_score >= (column_threshold - table_offset):
+                    used_schemas[table][column] = round(float(sim_score),3)
+                if column in found_columns:
+                    used_schemas[table][column] = 1.0
+            if max_n and len(used_schemas[table]) > max_n:
+                # Select the top k largest values from the dictionary
+                used_schemas[table] = dict(sorted(used_schemas[table].items(), key=lambda item: item[1], reverse=True)[:max_n])
+
+        return used_schemas
 
     def table_col_of_sql(self, sql_query:str) -> dict:
         """
