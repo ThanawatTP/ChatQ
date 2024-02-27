@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/thanawatthongpia/Desktop/code/fine-tuning/Word2Vec/mlruns/0/98b5f3fdff854756ad15d8e3df65e280/artifacts
+end_time: 1699343254602
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 98b5f3fdff854756ad15d8e3df65e280
+run_name: Create Word2Vec Model
+run_uuid: 98b5f3fdff854756ad15d8e3df65e280
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1699343254569
+status: 4
+tags: []
+user_id: thanawatthongpia

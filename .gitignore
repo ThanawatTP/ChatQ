@@ -1,16 +1,12 @@
-mlruns
-src/*
-code-demo
-# !src/Corpus*
-models
-__pycache__
-spider
-col-linking
-db
-models
-docker/models
-docker/testing
-AIS
+# .env
 *.env
-.*
+
+# local sorce files and models
+src/*
+models
+
+# src data in docker container
 filtering_schema/src/data/*
+
+# Another projects
+AIS
