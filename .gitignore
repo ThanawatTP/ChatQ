@@ -1,9 +1,14 @@
 # .env
 *.env
 
-# local sorce files and models
-src/*
+# local files
+src
 models
+*__pycache__
+
+# source file in App container
+App/domain/pointx/*.db
+
 
 # src data in docker container
 filtering_schema/src/data/*

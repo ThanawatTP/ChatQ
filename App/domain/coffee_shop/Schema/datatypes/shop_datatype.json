@@ -1,0 +1,15 @@
+{
+  "JOIN_KEY": {
+    "PK": [
+      "Shop_ID"
+    ],
+    "FK": {}
+  },
+  "COLUMNS": {
+    "Shop_ID": "INT",
+    "Address": "TEXT",
+    "Num_of_staff": "TEXT",
+    "Score": "REAL",
+    "Open_Year": "TEXT"
+  }
+}

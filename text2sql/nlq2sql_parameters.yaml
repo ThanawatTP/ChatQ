@@ -1,4 +1,0 @@
-{'nsql_model_path': '/Users/thanawatthongpia/Desktop/code/fine-tuning/docker/models/nsql-350M',
- 'pointx_datatype_path': '/Users/thanawatthongpia/Desktop/code/fine-tuning/docker/src/columns_datatype.json',
- 'pointx_description_path': '/Users/thanawatthongpia/Desktop/code/fine-tuning/docker/src/pointx_fbs_rpt_dly_description.csv',
- 'sentence_emb_model_path': '/Users/thanawatthongpia/Desktop/code/fine-tuning/docker/models/all-MiniLM-L6-v2'}

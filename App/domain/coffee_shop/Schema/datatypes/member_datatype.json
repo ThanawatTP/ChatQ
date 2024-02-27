@@ -1,0 +1,17 @@
+{
+  "JOIN_KEY": {
+    "PK": [
+      "Member_ID"
+    ],
+    "FK": {}
+  },
+  "COLUMNS": {
+    "Member_ID": "INT",
+    "Name": "TEXT",
+    "Membership_card": "TEXT",
+    "Age": "INT",
+    "Time_of_purchase": "INT",
+    "Level_of_membership": "INT",
+    "Address": "TEXT"
+  }
+}

@@ -1,0 +1,12 @@
+services:
+  nlq2sql-join:
+    image: thanawatthongpia23044/nlq2sql:join-table-arm
+    container_name: nlq2sql-join
+    ports:
+      - "8000:8000"
+    environment:
+      # nsql_model_path: 'NumbersStation/nsql-350M'
+      # sentence_emb_model_path: 'sentence-transformers/all-MiniLM-L6-v2'
+      filter_table: False
+      column_threshold: 0.1
+      max_select_column: 10
