@@ -95,11 +95,23 @@ class SchemaLinking():
         return topic_selected
     
     def table_selected(self, question:str, max_cols:int=30):
+        """
+        Selects tables based on their relevance to a question and a maximum threshold on the total number of columns.
+
+        Args:
+            question (str): The question for which tables are being selected.
+            max_cols (int, optional): The maximum threshold on the total number of columns. Defaults to 30.
+
+        Returns:
+            list: A list of selected tables.
+        """
+
         question_vector = encode(question)
         question_split = question.split()
         table_scores = {}
         total_cols = {}
         total_sum = 0
+        # Calculate scores for each table based on their relevance to the question
         for table, table_vector in self.table_descriptions_vec.items():
             num_cols = len(self.column_info_df[self.column_info_df['Table'] == table])
             total_cols[table] = num_cols
@@ -110,9 +122,11 @@ class SchemaLinking():
 
         domain_tables = sorted(table_scores, key=lambda x: table_scores[x], reverse=True)
 
-        if total_sum <= max_cols: 
+        # If the total sum of columns is within the threshold, return all tables
+        if total_sum <= max_cols:
             return domain_tables
-        
+
+        # Otherwise, select tables until the threshold is reached
         selected_tables = []
         cols_selected = 0
         first_iteration = True
