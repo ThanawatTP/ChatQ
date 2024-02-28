@@ -1,0 +1,19 @@
+services:
+  chatq:
+    image: thanawatthongpia/chatq:nsqlllm-arm
+    container_name: chatq
+    ports:
+      - "8000:8000"
+    environment:
+      OPENAI_API_KEY: "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"
+      GOOGLE_API_KEY: "AIzaSyCL1lMVUqwf0nQKtLPk30tv7VUXTiKE-fE"
+      DEEPSEEK_API_KEY: "sk-8d0460b9ce124218b9b3b7794a8f7e08"
+      SENTENCE_EMB_MODEL_PATH: "models/all-MiniLM-L6-v2"
+      NSQL_MODEL_PATH: "models/nsql-350M"
+      # NSQL_MODEL_PATH: 'NumbersStation/nsql-350M'
+      # SENTENCE_EMB_MODEL_PATH: 'sentence-transformers/all-MiniLM-L6-v2'
+
+      llm_model_name: 'deepseek-coder'
+      use_llm: True
+
+      

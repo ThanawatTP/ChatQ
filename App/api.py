@@ -1,10 +1,7 @@
 import warnings
 import os
-from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, AutoModelForCausalLM
-
-load_dotenv('.env')
 
 sentence_emb_model_path = os.environ.get('SENTENCE_EMB_MODEL_PATH')
 nsql_model_path = os.environ.get('NSQL_MODEL_PATH')

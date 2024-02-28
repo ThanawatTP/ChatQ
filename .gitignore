@@ -3,7 +3,7 @@
 
 # local files
 src
-models
+**/models/*
 *__pycache__
 
 # source file in App container

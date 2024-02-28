@@ -8,9 +8,9 @@ from api import generate_nsql_sql
 from openai import OpenAI
 import google.generativeai as genai
 
-OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY')
-GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
+OPENAI_API_KEY = str(os.environ.get('OPENAI_API_KEY'))
+DEEPSEEK_API_KEY = str(os.environ.get('DEEPSEEK_API_KEY'))
+GOOGLE_API_KEY = str(os.environ.get('GOOGLE_API_KEY'))
 
 class TextInput(BaseModel):
     text: str
@@ -38,12 +38,17 @@ app.add_middleware(
 )
 
 # for docker environment
-llm_model_name = "deepseek-coder"
-max_n = 10
-temperature = 0
-verbose = True
-use_nsql = True
-use_llm = True
+llm_model_name = str(os.environ.get('llm_model_name'))
+max_n = int(os.environ.get('max_n'))
+temperature = int(os.environ.get('temperature'))
+verbose = bool(os.environ.get('verbose'))
+use_llm = bool(os.environ.get('use_llm'))
+
+if verbose:
+    print("Filtering columns:", max_n, type(max_n))
+    print("LLM Model:", llm_model_name, type(llm_model_name))
+    print("Temperature:", temperature, type(temperature))
+    print("Use LLM:", use_llm, type(use_llm))
 
 
 llm_stop = ['\n\n']
