@@ -9,6 +9,8 @@ src
 # source file in App container
 App/domain/pointx/*.db
 
+# compose
+*.yml
 
 # src data in docker container
 filtering_schema/src/data/*
