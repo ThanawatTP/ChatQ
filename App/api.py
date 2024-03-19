@@ -20,3 +20,9 @@ def generate_nsql_sql(prompt):
         generated_ids = model.generate(input_ids, max_length=1000)
         sql = tokenizer.decode(generated_ids[0], skip_special_tokens=True).split('\n')[-1]
     return sql
+
+"""
+Note:   Using Transformers library for its robust pre-trained models
+        for NLP tasks like NL to SQL conversion. Plan to transition to API
+        calling in the future to separate concerns and improve scalability.
+"""
